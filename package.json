@@ -1,0 +1,22 @@
+{
+  "name": "generic-protractor-framework",
+  "version": "1.0.0",
+  "description": "Generic Protractor Automation Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CameronsOdecee/generic-protractor-framework.git"
+  },
+  "keywords": [
+    "Automation"
+  ],
+  "author": "Cameron Bradley <cameron.bradley@tabcorp.com.au> (http://www.tabcorp.com.au)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CameronsOdecee/generic-protractor-framework/issues"
+  },
+  "homepage": "https://github.com/CameronsOdecee/generic-protractor-framework#readme"
+}

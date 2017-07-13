@@ -7,15 +7,15 @@ module.exports = function () {
   // Before hook for each step
   this.Before(function (scenario, next) {
       var tags = scenario.getTags();
-      var browser_type = helpers.replaceTagSyntax(tags[0].getName());
+      var browser_type = tags[0].getName();
 
       //set the browser dimensions for the test
       browser.params.browser_type = browser_type;
-      if (browser_type === "mobile") {
+      if (browser_type === "@mobile") {
           browser.driver.manage().window().setSize(375, 667);
-      } else if (browser_type === "tablet") {
+      } else if (browser_type === "@tablet") {
           browser.driver.manage().window().setSize(768, 1024);
-      } else if (browser_type === "desktop") {
+      } else if (browser_type === "@desktop") {
           browser.driver.manage().window().setSize(1600, 968);
       }
       next();

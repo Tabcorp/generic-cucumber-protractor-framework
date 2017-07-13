@@ -17,7 +17,7 @@ const pageTitle = function (page = current_page) {
       .then(function () {
         return titleElement.getText().should.eventually.contain(title);
       }, function (err) {
-        deferred.reject(`No attribute test-id="${titleElementName}" for page "${page}"`);
+        deferred.reject(`No attribute data-id="${titleElementName}" for page "${page}"`);
       }).then(deferred.resolve, function (err) {
         deferred.reject(`Page does not contain title "${title}"!`);
       });

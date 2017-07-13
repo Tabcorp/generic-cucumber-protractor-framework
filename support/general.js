@@ -9,15 +9,15 @@ const general = {
     return by.css(selector);
   },
 
-  cssByTestId: function (test_id) {
-    return this.byCss('[test-id="' + test_id + '"]');
+  cssByDataId: function (data_id) {
+    return this.byCss('[data-id="' + data_id + '"]');
   },
 
   css: function (element_selector) {
     if (element_selector.search(/^(?:[.#])/) >= 0) {
       return this.byCss(element_selector);
     }
-    return this.cssByTestId(element_selector);
+    return this.cssByDataId(element_selector);
   },
 
   hasAttribute(element, attribute_type, attribute) {

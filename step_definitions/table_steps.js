@@ -1,5 +1,5 @@
-const pageObjects = require('./pageObjects');
-const waitFor = require('./waitFor');
+const pageObjects = require('../support/pageObjects');
+const waitFor = require('../support/waitFor');
 
 module.exports = function() {
 

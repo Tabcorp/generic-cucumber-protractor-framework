@@ -1,4 +1,4 @@
-var pageObjects = require('./pageObjects');
+var pageObjects = require('../support/pageObjects');
 
 module.exports = function () {
 

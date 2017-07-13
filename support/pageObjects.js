@@ -1,7 +1,7 @@
 const _ = require('lodash');
-const general = require('general');
-const page = require('page');
-const waitFor = require('waitFor');
+const general = require('./general');
+const page = require('./page');
+const waitFor = require('./waitFor');
 
 const elementFor = function (element_name) {
   const page_name = page.getPage();

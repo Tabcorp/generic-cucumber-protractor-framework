@@ -1,4 +1,4 @@
-var current_page = require('./page');
+var current_page = require('../support/page');
 
 module.exports = function () {
   this.Given(/^I am on the "([^"]*)" page$/, function (page_name, next) {

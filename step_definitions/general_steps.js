@@ -1,9 +1,9 @@
-const general = require('./general');
-const pageObjects = require('./pageObjects');
-const page = require('./page');
-const helpers = require('./helpers');
-const browsers = require('./browsers');
-const waitFor = require('./waitFor');
+const general = require('../support/general');
+const pageObjects = require('../support/pageObjects');
+const page = require('../support/page');
+const helpers = require('../support/helpers');
+const browsers = require('../support/browsers');
+const waitFor = require('../support/waitFor');
 
 module.exports = function () {
 

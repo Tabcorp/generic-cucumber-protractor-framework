@@ -1,8 +1,8 @@
 const Q = require('q');
-const waitFor = require('waitFor');
+const waitFor = require('./waitFor');
 const _ = require('lodash');
 const pageObjects = require('./pageObjects');
-var browsers = require('browsers');
+const browsers = require('./browsers');
 
 const general = {
   byCss: function (selector) {

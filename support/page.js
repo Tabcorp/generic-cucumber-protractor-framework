@@ -1,8 +1,10 @@
 const Q = require('q');
-const general = require('general');
-const navigation = require('navigation');
-const waitFor = require('waitFor');
-const pageObjects = require('pageObjects');
+const general = require('./general');
+const navigation = require('./navigation');
+const waitFor = require('./waitFor');
+const pageObjects = require('./pageObjects');
+const path = require('path');
+const ROOT_PATH = path.resolve(__dirname, '../../..');
 let current_page;
 
 const pageTitle = function (page = current_page) {
@@ -53,7 +55,7 @@ const setCurrentPage = function (page) {
 };
 
 const pageFor = function (page) {
-  return require('../definitions/pages/' + page + '.json');
+  return require(ROOT_PATH + '/e2e/features/definitions/pages/' + page + '.json');
 };
 
 const getPage = function () {

@@ -1,4 +1,4 @@
-var current_page = require("page");
+var current_page = require("./page");
 const BASE_URL_TEMPLATE = "http://server:port";
 
 var getBaseUrl = function (route) {

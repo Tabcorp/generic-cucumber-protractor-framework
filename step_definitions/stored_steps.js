@@ -1,6 +1,6 @@
-const pageObjects = require('./pageObjects');
-const stored_data = require('./stored_data');
-const waitFor = require('./waitFor');
+const pageObjects = require('../support/pageObjects');
+const stored_data = require('../support/stored_data');
+const waitFor = require('../support/waitFor');
 
 module.exports = function() {
 

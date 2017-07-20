@@ -1,6 +1,6 @@
 {
   "name": "generic-protractor-framework",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generic Protractor Automation Framework",
   "main": "index.js",
   "scripts": {

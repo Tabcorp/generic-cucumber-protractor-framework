@@ -13,7 +13,6 @@ module.exports = function () {
     pageObjects.waitForElementToLoad(element_selector)
       .then(function (current_element) {
         return waitFor(() => {
-          console.log(current_element)
           return current_element.click();
         })
       })
@@ -21,8 +20,6 @@ module.exports = function () {
         page.setPage(page_name);
         return waitFor(() => {
           return browsers.myBrowser().getCurrentUrl().then(function(url){
-            console.log(current_url)
-            console.log(url)
             url.toLowerCase().should.contain(current_url);
           })
         });

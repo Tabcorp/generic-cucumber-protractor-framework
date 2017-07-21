@@ -21,8 +21,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="75">
-                <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+              <first_editor relative-caret-position="30">
+                <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -34,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/step_definitions/table_steps.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="64" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="64" />
+              <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -718,12 +718,12 @@
       <workItem from="1499916294513" duration="9773000" />
       <workItem from="1500511887951" duration="3785000" />
       <workItem from="1500526180557" duration="3648000" />
-      <workItem from="1500610042125" duration="1916000" />
+      <workItem from="1500610042125" duration="2603000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22535000" />
+    <option name="totallyTimeSpent" value="23222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1700" y="-710" width="1962" height="901" extended-state="0" />
@@ -1148,7 +1148,7 @@
     <entry file="file://$PROJECT_DIR$/step_definitions/table_steps.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="64" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="64" />
+          <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -1156,8 +1156,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="75">
-            <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <first_editor relative-caret-position="30">
+            <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             <folding />
           </first_editor>
           <second_editor />

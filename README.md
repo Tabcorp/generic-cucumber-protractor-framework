@@ -4,8 +4,6 @@
 FORM STEPS
 ----------
 
-To assert that specified text can be found use any of the following steps.
-
     Then I fill in the "([^"]*)" input with "([^"]*)"
    
     

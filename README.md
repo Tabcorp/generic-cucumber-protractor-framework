@@ -25,7 +25,7 @@ GENERAL STEPS
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"
-    Then the "([^"]*)" element should( not)? be displayed$
+    Then the "([^"]*)" element should( not)? be displayed
     Then the "([^"]*)" element should( not)? be present
     Then the "([^"]*)" element should( not)? be enable
     Then the "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"

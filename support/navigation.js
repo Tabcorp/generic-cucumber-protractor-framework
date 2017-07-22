@@ -1,9 +1,12 @@
-var current_page = require("./page");
+const current_page = require("./page");
 const BASE_URL_TEMPLATE = "http://server:port";
 
 var getBaseUrl = function (route) {
-  var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
-  return `${baseUrl}${route}`;
+    switch(navigation.getEnvironment()) {
+        const baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
+        break;
+    }
+    return `${baseUrl}${route}`;
 };
 
 var webServer = function () {
@@ -19,11 +22,17 @@ var elementFor = function (page, page_type) {
 };
 
 var navigation = {
-  getPage: function (page) {
-    var route = elementFor("pages", page);
-    console.log(getBaseUrl(route));
-    return getBaseUrl(route);
-  },
+
+    getPage: function (page) {
+      var route = elementFor("pages", page);
+      console.log(getBaseUrl(route));
+      return getBaseUrl(route);
+    },
+
+    getEnvironment: function() {
+        var build_environment = process.env.BUILD_ENVIRONMENT || "local";
+        return build_environment;
+    },
 };
 
 module.exports = navigation;

@@ -1,4 +1,4 @@
-# GENERIC PROTRACTOR FRAMEWORK #
+# GENERIC CUCUMBER PROTRACTOR FRAMEWORK #
 
 ![alt text](http://i65.tinypic.com/fasv1s.jpg)
 

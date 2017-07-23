@@ -1,6 +1,6 @@
 # GENERIC PROTRACTOR FRAMEWORK #
 
-![alt text](http://imgur.com/a/4Csqk)
+![alt text](http://i65.tinypic.com/fasv1s.jpg)
 
 ###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - Cameron Bradley
 

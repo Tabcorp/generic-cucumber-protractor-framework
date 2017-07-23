@@ -4,7 +4,7 @@ const navigation = require('./navigation');
 const waitFor = require('./waitFor');
 const pageObjects = require('./pageObjects');
 const path = require('path');
-const ROOT_PATH = path.resolve(__dirname, '../../..');
+const ROOT_PATH = path.resolve('./');
 let current_page;
 
 const pageTitle = function (page = current_page) {

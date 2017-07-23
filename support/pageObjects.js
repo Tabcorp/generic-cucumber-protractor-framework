@@ -32,6 +32,16 @@ const waitForElementAtIndexToLoad = function (indexText, element_selector) {
   });
 };
 
+const waitForElementWithinElementAtIndexToLoad = function (indexText, main_element_selector, secondary_element_selector) {
+    let current_element = null;
+    return waitFor(() => {
+    current_element = general.getWithinElementAtIndex(indexText, main_element_selector, secondary_element_selector);
+    return current_element.isPresent().should.eventually.be.true;
+    }).then(function () {
+          return current_element;
+    });
+};
+
 const waitForElementHover = function (element_name) {
   return waitFor(() => {
     const current_element = general.getElement(element_name);
@@ -44,4 +54,5 @@ const waitForElementHover = function (element_name) {
 module.exports.elementFor = elementFor;
 module.exports.waitForElementToLoad = waitForElementToLoad;
 module.exports.waitForElementAtIndexToLoad = waitForElementAtIndexToLoad;
+module.exports.waitForElementWithinElementAtIndexToLoad = waitForElementWithinElementAtIndexToLoad;
 module.exports.waitForElementHover = waitForElementHover;

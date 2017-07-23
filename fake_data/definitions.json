@@ -1,0 +1,8 @@
+{
+  "first name" : "faker.name.firstName()",
+  "last name" : "faker.name.lastName()",
+  "username" : "faker.name.firstName()",
+  "email" : "faker.internet.email()",
+  "password" : "faker.internet.password()",
+  "street name" : "faker.address.streetName()"
+}

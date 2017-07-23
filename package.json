@@ -1,6 +1,6 @@
 {
   "name": "generic-protractor-framework",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Generic Protractor Automation Framework",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/CameronsOdecee/generic-protractor-framework/issues"
   },
-  "homepage": "https://github.com/CameronsOdecee/generic-protractor-framework#readme"
+  "homepage": "https://github.com/CameronsOdecee/generic-protractor-framework#readme",
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
+    "q": "^1.5.0"
+  }
 }

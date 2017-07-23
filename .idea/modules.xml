@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/generic-protractor-framework.iml" filepath="$PROJECT_DIR$/.idea/generic-protractor-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/generic-cucumber-protractor-framework.iml" filepath="$PROJECT_DIR$/.idea/generic-cucumber-protractor-framework.iml" />
     </modules>
   </component>
 </project>

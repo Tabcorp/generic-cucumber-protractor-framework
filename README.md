@@ -2,7 +2,7 @@
 
 ![alt text](http://i65.tinypic.com/fasv1s.jpg)
 
-###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - Cameron Bradley
+###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - <a href="https://au.linkedin.com/in/cambradley">Cameron Bradley</a>
 
 FORM STEPS
 ----------

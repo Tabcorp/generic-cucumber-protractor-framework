@@ -28,6 +28,7 @@ GENERAL STEPS
     
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+    When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
     
 ### Assertions ###
 
@@ -39,6 +40,8 @@ GENERAL STEPS
     Then the "([^"]*)" element should( not)? be enable
     Then the "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"
     Then the "([^"]*)" contains the "([^"]*)" attributes "([^"]*)"
+    Then the "([^"]*)" contains the "([^"]*)" text "([^"]*)"
+    Then the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"
     Then the "([^"]*)" does not contain the "([^"]*)" attributes "([^"]*)"
     Then the "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"
     Then the "([^"]*)" contains the text "([^"]*)"
@@ -71,6 +74,7 @@ NAVIGATION STEPS
     Given I am directed to the "([^"]*)" page
     Given I set the page to "([^"]*)"
     Then I see the "([^"]*)" page title
+    When I navigate directly to the "([^"]*)" page with the stored "([^"]*)"
     
     
 STORED STEPS
@@ -82,9 +86,10 @@ STORED STEPS
         
 #### Element at Index ####
         
+    When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"
-    the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"
+    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"
     
     
 TABLE STEPS

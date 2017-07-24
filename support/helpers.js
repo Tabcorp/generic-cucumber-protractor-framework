@@ -14,6 +14,10 @@ cleanArray = function (array) {
   return cleaned_array
 };
 
+replaceSpace = function (string) {
+    return string.replace(" ","");
+};
+
 randomString = function (length) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -25,4 +29,5 @@ randomString = function (length) {
 
 module.exports.hasClass = hasClass;
 module.exports.cleanArray = cleanArray;
+module.exports.replaceSpace = replaceSpace;
 module.exports.randomString = randomString;

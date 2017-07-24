@@ -1,5 +1,8 @@
-var current_page = require('../support/page');
+const current_page = require('../support/page');
+const navigation = require('../support/navigation');
 const browsers = require('../support/browsers');
+const stored_data = require('../support/stored_data');
+const helpers = require('../support/helpers');
 
 module.exports = function () {
     this.Given(/^I am on the "([^"]*)" page$/, function (page_name, next) {
@@ -12,6 +15,12 @@ module.exports = function () {
 
     this.When(/^I set the page to "([^"]*)"$/, function (page_name, next) {
         current_page.setPage(page_name);
+        next();
+    });
+
+    this.When(/^I navigate directly to the "([^"]*)" page with the stored "([^"]*)"$/, function (page_name, stored_value, next) {
+        var stored_value = stored_data.getData(stored_value);
+        browsers.myBrowser().get(navigation.getPageByURL(page_name, helpers.replaceSpace(stored_value)))
         next();
     });
 

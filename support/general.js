@@ -63,6 +63,17 @@ const getElementAtIndexWithElementType = function(element_selector, index, eleme
     return parent.element(by.css(element_type));
 };
 
+const isElementTextPresent = function (element_selector, attribute_type, text) {
+    return this.hasText(this.getElement(element_selector), attribute_type, text)
+        .then(function (hasText) {
+            if (hasText) {
+                return true
+            } else {
+                return false
+            }
+        });
+};
+
 const checkElementTextAtIndexIsPresent =  function (index, element_selector, attribute_type, text) {
     const current_element = element.all(this.css(element_selector)).get(index);
     return this.hasText(current_element, attribute_type, text)
@@ -188,6 +199,7 @@ module.exports.findElement = findElement;
 module.exports.getElementAtIndex = getElementAtIndex;
 module.exports.getWithinElementAtIndex = getWithinElementAtIndex;
 module.exports.getElementAtIndexWithElementType = getElementAtIndexWithElementType;
+module.exports.isElementTextPresent = isElementTextPresent;
 module.exports.checkElementTextAtIndexIsPresent = checkElementTextAtIndexIsPresent;
 module.exports.checkElementIsDisplayed = checkElementIsDisplayed;
 module.exports.checkElementIsNotDisplayed = checkElementIsNotDisplayed;

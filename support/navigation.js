@@ -29,10 +29,17 @@ const getPage = function (page) {
     return getBaseUrl(route);
 };
 
+const getPageByURL = function(page, stored_value) {
+    var new_page = elementFor("pages", page);
+    var route = new_page + stored_value;
+    return getBaseUrl(route);
+};
+
 const getEnvironment = function() {
     var build_environment = process.env.BUILD_ENVIRONMENT || "local";
     return build_environment;
 };
 
 module.exports.getPage = getPage;
+module.exports.getPageByURL = getPageByURL;
 module.exports.getEnvironment = getEnvironment;

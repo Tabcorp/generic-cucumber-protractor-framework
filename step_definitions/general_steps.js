@@ -88,6 +88,17 @@ module.exports = function () {
             });
     });
 
+    this.Then(/^I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, function (indexText, element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        const index = parseInt(indexText) - 1;
+        pageObjects.waitForElementHover(element_selector)
+            .then(function () {
+                browser.actions().mouseMove(general.getElementAtIndex(index, element_selector));
+                next();
+            });
+    });
+
+
     this.When(/^I wait "([^"]*)" seconds?$/, function (seconds, next) {
         browser.sleep(seconds * 1000).then(next);
     });
@@ -201,6 +212,16 @@ module.exports = function () {
                         return current_element.getText().should.eventually.not.contain(text);
             });
             }).should.notify(next);
+    });
+
+    this.Then(/^the "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        general.isElementTextPresent(element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);
+    });
+
+    this.Then(/^the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        general.isElementTextPresent(element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
     });
 
     this.Then(/^the "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {

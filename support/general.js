@@ -53,6 +53,11 @@ const getElementAtIndex = function (index, element_selector) {
     return this.getElements(element_selector).get(index);
 };
 
+const getElementWithinElement = function (main_element_selector, secondary_element_selector) {
+    const parent = element(this.css(main_element_selector));
+    return parent.element(this.css(secondary_element_selector));
+};
+
 const getWithinElementAtIndex = function (index, main_element_selector, secondary_element_selector) {
     const parent = element.all(this.css(main_element_selector)).get(index);
     return parent.element(this.css(secondary_element_selector));
@@ -111,6 +116,13 @@ const checkElementWithinElementAtIndexIsNotDisplayed = function (index, secondar
     return waitFor(() => {
             const current_element = this.getWithinElementAtIndex(index, main_element_selector, secondary_element_selector);
     return current_element.isDisplayed().should.eventually.be.false;
+});
+};
+
+const checkElementWithinElementIsPresent = function (main_element_selector, secondary_element_selector) {
+    return waitFor(() => {
+         const current_element = this.getElementWithinElement(main_element_selector, secondary_element_selector);
+    return current_element.isPresent().should.eventually.be.true;
 });
 };
 
@@ -185,6 +197,10 @@ const getNumberOfElements = function(element_selector) {
     });
 };
 
+const getElementsCountWithInParentElementAtIndex = function (index, main_element_selector, secondary_element_selector) {
+    var parent_element = element.all(by.css('[data-id="'+main_element_selector+'"]')).get(index);
+    return parent_element.all(by.css('[data-id="'+secondary_element_selector+'"]')).count();
+};
 
 
 module.exports.getElement = getElement;
@@ -196,6 +212,7 @@ module.exports.hasAttributes = hasAttributes;
 module.exports.hasText = hasText;
 module.exports.getElements = getElements;
 module.exports.findElement = findElement;
+module.exports.getElementWithinElement = getElementWithinElement;
 module.exports.getElementAtIndex = getElementAtIndex;
 module.exports.getWithinElementAtIndex = getWithinElementAtIndex;
 module.exports.getElementAtIndexWithElementType = getElementAtIndexWithElementType;
@@ -205,6 +222,7 @@ module.exports.checkElementIsDisplayed = checkElementIsDisplayed;
 module.exports.checkElementIsNotDisplayed = checkElementIsNotDisplayed;
 module.exports.checkElementWithinElementAtIndexIsDisplayed = checkElementWithinElementAtIndexIsDisplayed;
 module.exports.checkElementWithinElementAtIndexIsNotDisplayed = checkElementWithinElementAtIndexIsNotDisplayed;
+module.exports.checkElementWithinElementIsPresent = checkElementWithinElementIsPresent;
 module.exports.checkElementAtIndexIsDisplayed = checkElementAtIndexIsDisplayed;
 module.exports.checkElementAtIndexIsNotDisplayed = checkElementAtIndexIsNotDisplayed;
 module.exports.checkElementIsPresent = checkElementIsPresent;
@@ -216,3 +234,4 @@ module.exports.isElementAttributesPresent = isElementAttributesPresent;
 module.exports.clickElement = clickElement;
 module.exports.scrollDown = scrollDown;
 module.exports.getNumberOfElements = getNumberOfElements;
+module.exports.getElementsCountWithInParentElementAtIndex = getElementsCountWithInParentElementAtIndex;

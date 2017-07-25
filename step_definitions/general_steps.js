@@ -58,6 +58,21 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(() => general.getElement(element_selector).click())
+        .should.notify(next);
+    });
+
+    this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (indexText, button, next) {
+        const index = parseInt(indexText) - 1;
+        const element_selector = pageObjects.elementFor(button);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(() => general.getElementAtIndex(index, element_selector).click())
+        .should.notify(next);
+    });
+
     this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element$/, function (indexText, main_element, second_element, next) {
         const index = parseInt(indexText) - 1;
         const main_element_selector = pageObjects.elementFor(main_element);
@@ -182,6 +197,23 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"$/, function (indexText, main_element, count, second_element, next) {
+        const main_element_index = parseInt(indexText) - 1;
+        var current_main_element = pageObjects.elementFor(main_element);
+        var current_second_element = pageObjects.elementFor(second_element);
+        pageObjects.waitForElementToLoad(current_main_element)
+            .then(function () {
+                general.getElementsCountWithInParentElementAtIndex(main_element_index, current_main_element, current_second_element).should.eventually.equal(parseInt(count)).should.notify(next);
+            });
+    });
+
+
+    this.Then(/^the "([^"]*)" element within the "([^"]*)" should be present$/, function (second_element, main_element, next) {
+        var current_main_element = pageObjects.elementFor(main_element);
+        var current_second_element = pageObjects.elementFor(second_element);
+        general.checkElementWithinElementIsPresent(current_main_element, current_second_element).should.eventually.be.true.and.notify(next);
+    });
+
     this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"$/, function (indexText, element_name, text, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
@@ -254,19 +286,6 @@ module.exports = function () {
     this.Then(/^the "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
         general.isElementAttributePresent(element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
-    });
-
-    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        general.clickElement(element_selector).should.notify(next);
-    });
-
-    this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (indexText, button, next) {
-        const index = parseInt(indexText) - 1;
-        const element_selector = pageObjects.elementFor(button);
-        pageObjects.waitForElementToLoad(element_selector)
-            .then(() => general.getElementAtIndex(index, element_selector).click())
-        .should.notify(next);
     });
 
     this.Then(/^I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/, function (num, element_name, next) {

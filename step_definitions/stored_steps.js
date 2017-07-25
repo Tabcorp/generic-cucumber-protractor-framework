@@ -46,6 +46,20 @@ module.exports = function() {
             }).should.notify(next);
     });
 
+    this.Then(/^I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"$/, function (indexText, element_name, element_type, name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        const index = parseInt(indexText) - 1;
+        pageObjects.waitForElementAtIndexToLoad(index, element_selector)
+            .then(function () {
+                return waitFor(() => {
+                        return general.getElementAtIndexWithElementType(element_selector, index, element_type).getText().then(function (retrieved_text) {
+                            console.log(retrieved_text)
+                            stored_data.setData(name, retrieved_text);
+                        })
+                    })
+            }).should.notify(next);
+    });
+
     this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"$/, function (indexText, element_name, element_type, name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;

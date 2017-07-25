@@ -37,6 +37,7 @@ GENERAL STEPS
 
     Then the "([^"]*)" element should( not)? be displayed
     Then the "([^"]*)" element should( not)? be present
+    Then the "([^"]*)" element within the "([^"]*)" should be present
     Then the "([^"]*)" element should( not)? be enable
     Then the "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"
     Then the "([^"]*)" contains the "([^"]*)" attributes "([^"]*)"
@@ -55,11 +56,12 @@ GENERAL STEPS
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"
-    the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
+    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element
-    the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element
+    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element
+    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"
     
 ### Wait and Scroll ###
     
@@ -74,6 +76,7 @@ NAVIGATION STEPS
     Given I am directed to the "([^"]*)" page
     Given I set the page to "([^"]*)"
     Then I see the "([^"]*)" page title
+    When I navigate to the "([^"]*)" page
     When I navigate directly to the "([^"]*)" page with the stored "([^"]*)"
     
     
@@ -87,6 +90,7 @@ STORED STEPS
 #### Element at Index ####
         
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
+    When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"

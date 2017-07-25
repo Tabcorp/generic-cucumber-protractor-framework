@@ -14,8 +14,8 @@ cleanArray = function (array) {
   return cleaned_array
 };
 
-replaceSpace = function (string) {
-    return string.replace(" ","");
+const replaceSpace = function (string) {
+    return string.split(' ').join('')
 };
 
 randomString = function (length) {

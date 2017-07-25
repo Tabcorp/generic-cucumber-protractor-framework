@@ -18,6 +18,11 @@ module.exports = function () {
         next();
     });
 
+    this.When(/^I navigate to the "([^"]*)" page$/, function (page_name, next) {
+        current_page.setPage(page_name);
+        current_page.goto(page_name, next);
+    });
+
     this.When(/^I navigate directly to the "([^"]*)" page with the stored "([^"]*)"$/, function (page_name, stored_value, next) {
         var stored_value = stored_data.getData(stored_value);
         browsers.myBrowser().get(navigation.getPageByURL(page_name, helpers.replaceSpace(stored_value)))

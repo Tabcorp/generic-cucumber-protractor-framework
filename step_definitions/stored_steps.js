@@ -88,4 +88,18 @@ module.exports = function() {
             }).should.notify(next);
     });
 
+    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the stored "([^"]*)"$/, function (indexText, element_name, name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        const index = parseInt(indexText) - 1;
+        pageObjects.waitForElementAtIndexToLoad(index, element_selector)
+            .then(function (current_element) {
+                return waitFor(() => {
+                        return current_element.getText().then(function (retrieved_text) {
+                            const retrieved_stored_value = stored_data.getData(name);
+                            return retrieved_text.toString().should.include(retrieved_stored_value);
+                        })
+                    })
+            }).should.notify(next);
+    });
+
 }

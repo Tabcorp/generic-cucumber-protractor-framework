@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a40fb162-1511-423f-b636-ea901f4fecd9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/definitions/elements.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/step_definitions/form_steps.js" afterPath="$PROJECT_DIR$/step_definitions/form_steps.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/step_definitions/general_steps.js" afterPath="$PROJECT_DIR$/step_definitions/general_steps.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/step_definitions/stored_steps.js" afterPath="$PROJECT_DIR$/step_definitions/stored_steps.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/support/general.js" afterPath="$PROJECT_DIR$/support/general.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/support/pageObjects.js" afterPath="$PROJECT_DIR$/support/pageObjects.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/support/stored_data.js" afterPath="$PROJECT_DIR$/support/stored_data.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,6 +17,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="general.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/support/general.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="general_steps.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="general_steps.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/step_definitions/general_steps.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
@@ -100,10 +102,10 @@
       <find>element attribute within the</find>
       <find>should be displayed</find>
       <find>within</find>
-      <find>getElementAtIndexWithInElementAtIndexDisplayed</find>
       <find>checkElementAtIndexWithInElementAtIndexDisplaye</find>
       <find>AS A USER I EXPECT TO BE ABLE TO SCROLL FORWARD AND BACK</find>
       <find>getElementIndexWithElementTypeWithinElementAtIndex</find>
+      <find>getElementAtIndexWithInElementAtIndexDisplayed</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,7 +132,6 @@
         <option value="$PROJECT_DIR$/step_definitions/navigation_steps.js" />
         <option value="$PROJECT_DIR$/support/helpers.js" />
         <option value="$PROJECT_DIR$/step_definitions/hook.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/step_definitions/form_steps.js" />
         <option value="$PROJECT_DIR$/definitions/elements.json" />
         <option value="$PROJECT_DIR$/support/stored_data.js" />
@@ -139,6 +140,7 @@
         <option value="$PROJECT_DIR$/step_definitions/stored_steps.js" />
         <option value="$PROJECT_DIR$/support/general.js" />
         <option value="$PROJECT_DIR$/step_definitions/general_steps.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -760,12 +762,12 @@
       <workItem from="1500813514486" duration="2000" />
       <workItem from="1500813538610" duration="25357000" />
       <workItem from="1500983107929" duration="3303000" />
-      <workItem from="1501028454074" duration="30112000" />
+      <workItem from="1501028454074" duration="30146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116389000" />
+    <option name="totallyTimeSpent" value="116423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="30" y="56" width="1634" height="850" extended-state="0" />
@@ -1082,14 +1084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/support/waitFor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1203,6 +1197,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="356" column="35" lean-forward="false" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
           <folding />
         </state>
       </provider>

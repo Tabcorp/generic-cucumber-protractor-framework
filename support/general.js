@@ -49,8 +49,20 @@ const findElement = function (element_selector) {
     return browser.driver.findElement(this.css(element_selector));
 };
 
+const getElementByText = function (element_selector, text) {
+    return element(by.cssContainingText(element_selector, text))
+}
+
+const getElementByTextAtIndex = function(element_selector, index, text) {
+    return element.all(by.cssContainingText(element_selector, text)).get(index)
+};
+
 const getElementAtIndex = function (index, element_selector) {
     return this.getElements(element_selector).get(index);
+};
+
+const getElementAtLastIndex = function(element_selector) {
+    return this.getElements(element_selector).last();
 };
 
 const getElementWithinElement = function (main_element_selector, secondary_element_selector) {
@@ -63,9 +75,20 @@ const getWithinElementAtIndex = function (index, main_element_selector, secondar
     return parent.element(this.css(secondary_element_selector));
 };
 
+const getElementAtIndexWithInElementAtIndexDisplayed = function(second_element_index, secondary_element_selector, main_element_index, main_element_selector) {
+    const parent = element.all(this.css(main_element_selector)).get(main_element_index);
+    return parent.all(this.css(secondary_element_selector)).get(second_element_index);
+};
+
 const getElementAtIndexWithElementType = function(element_selector, index, element_type) {
     const parent = element.all(this.css(element_selector)).get(index);
     return parent.element(by.css(element_type));
+};
+
+const getElementIndexWithElementTypeWithinElementAtIndex = function(main_element_selector, main_element_index, element_type, secondary_element_selector, second_element_index) {
+    const parent = element.all(this.css(main_element_selector)).get(main_element_index);
+    const child = parent.all(this.css(secondary_element_selector)).get(second_element_index);
+    return child.element(by.css(element_type));
 };
 
 const isElementTextPresent = function (element_selector, attribute_type, text) {
@@ -79,10 +102,25 @@ const isElementTextPresent = function (element_selector, attribute_type, text) {
         });
 };
 
+const isElementTextAtIndexPresent = function (index, element_selector, attribute_type, text) {
+    return this.hasText(this.getElementAtIndex(index, element_selector), attribute_type, text)
+        .then(function (hasAttributes) {
+            if (hasAttributes) {
+                return true
+            } else {
+                return false
+            }
+        });
+};
+
 const getNumberOfElements = function(element_selector) {
     return general.getElements(element_selector).then(function (elementsList) {
         return elementsList.length;
     });
+};
+
+const getElementsCount = function(element_selector) {
+    return element.all(this.css(element_selector)).count();
 };
 
 const getElementsCountWithInParentElementAtIndex = function (index, main_element_selector, secondary_element_selector) {
@@ -129,6 +167,14 @@ const checkElementWithinElementAtIndexIsNotDisplayed = function (index, secondar
     return current_element.isDisplayed().should.eventually.be.false;
 });
 };
+
+const checkElementAtIndexWithInElementAtIndexDisplayed = function(main_index, current_main_element, second_index, current_second_element) {
+    return waitFor(() => {
+            const current_element = this.getElementAtIndexWithInElementAtIndexDisplayed(main_index, current_main_element, second_index, current_second_element);
+    return current_element.isDisplayed().should.eventually.be.true;
+});
+};
+
 
 const checkElementWithinElementIsPresent = function (main_element_selector, secondary_element_selector) {
     return waitFor(() => {
@@ -189,6 +235,7 @@ const isElementAttributesPresent = function (element_selector, attribute_type, a
   });
 };
 
+
 const clickElement = function (element_selector) {
     return pageObjects.waitForElementToLoad(element_selector)
         .then(function (current_element) {
@@ -212,11 +259,18 @@ module.exports.hasAttributes = hasAttributes;
 module.exports.hasText = hasText;
 module.exports.getElements = getElements;
 module.exports.findElement = findElement;
+module.exports.getElementByText = getElementByText;
+module.exports.getElementByTextAtIndex = getElementByTextAtIndex;
 module.exports.getElementWithinElement = getElementWithinElement;
 module.exports.getElementAtIndex = getElementAtIndex;
+module.exports.getElementAtLastIndex = getElementAtLastIndex;
 module.exports.getWithinElementAtIndex = getWithinElementAtIndex;
+module.exports.getElementAtIndexWithInElementAtIndexDisplayed = getElementAtIndexWithInElementAtIndexDisplayed;
 module.exports.getElementAtIndexWithElementType = getElementAtIndexWithElementType;
+module.exports.getElementIndexWithElementTypeWithinElementAtIndex = getElementIndexWithElementTypeWithinElementAtIndex;
+module.exports.isElementTextAtIndexPresent = isElementTextAtIndexPresent;
 module.exports.getNumberOfElements = getNumberOfElements;
+module.exports.getElementsCount = getElementsCount;
 module.exports.getElementsCountWithInParentElementAtIndex = getElementsCountWithInParentElementAtIndex;
 module.exports.isElementTextPresent = isElementTextPresent;
 module.exports.checkElementTextAtIndexIsPresent = checkElementTextAtIndexIsPresent;
@@ -224,6 +278,7 @@ module.exports.checkElementIsDisplayed = checkElementIsDisplayed;
 module.exports.checkElementIsNotDisplayed = checkElementIsNotDisplayed;
 module.exports.checkElementWithinElementAtIndexIsDisplayed = checkElementWithinElementAtIndexIsDisplayed;
 module.exports.checkElementWithinElementAtIndexIsNotDisplayed = checkElementWithinElementAtIndexIsNotDisplayed;
+module.exports.checkElementAtIndexWithInElementAtIndexDisplayed = checkElementAtIndexWithInElementAtIndexDisplayed;
 module.exports.checkElementWithinElementIsPresent = checkElementWithinElementIsPresent;
 module.exports.checkElementAtIndexIsDisplayed = checkElementAtIndexIsDisplayed;
 module.exports.checkElementAtIndexIsNotDisplayed = checkElementAtIndexIsNotDisplayed;

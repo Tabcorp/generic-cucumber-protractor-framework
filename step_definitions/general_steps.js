@@ -46,6 +46,45 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.Then(/^I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (element_type, current_text, page_name, next) {
+        const current_element_type = pageObjects.elementTypeFor(element_type);
+        const current_url = page.getPageURL(page_name);
+        pageObjects.waitForElementWithTextToLoad(current_element_type, current_text)
+            .then(function (current_element) {
+                return waitFor(() => {
+                        return current_element.click();
+            })
+            })
+            .then(function () {
+                page.setPage(page_name);
+                return waitFor(() => {
+                        return browsers.myBrowser().getCurrentUrl().then(function(url){
+                            url.toLowerCase().should.contain(current_url);
+                        })
+                    });
+            }).should.notify(next);
+    });
+
+    this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (indexText, element_type, current_text, page_name, next) {
+        const index = parseInt(indexText) - 1;
+        const current_url = page.getPageURL(page_name);
+        const current_element_type = pageObjects.elementTypeFor(element_type);
+        pageObjects.waitForElementWithTextAtIndexToLoad(current_element_type, index, current_text)
+            .then(function (current_element) {
+                return waitFor(() => {
+                        return current_element.click();
+            })
+            })
+            .then(function () {
+                page.setPage(page_name);
+                return waitFor(() => {
+                        return browsers.myBrowser().getCurrentUrl().then(function(url){
+                            url.toLowerCase().should.contain(current_url);
+                        })
+                    });
+            }).should.notify(next);
+    });
+
     this.Given(/^I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)" "([^"]*)"$/, function (second_element, indexText, main_element, next) {
         const index = parseInt(indexText) - 1;
         const main_element_selector = pageObjects.elementFor(main_element);
@@ -256,6 +295,12 @@ module.exports = function () {
         general.isElementTextPresent(element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
     });
 
+    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, function (indexText, element_name, attribute_type, attribute, next) {
+        const index = parseInt(indexText) - 1;
+        const element_selector = pageObjects.elementFor(element_name);
+        general.isElementTextAtIndexPresent(index, element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
+    });
+
     this.Then(/^the "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
         general.isElementAttributePresent(element_selector, attribute_type, attribute).should.notify(next);
@@ -283,21 +328,34 @@ module.exports = function () {
         general.checkClassAtIndexIsPresent(index, element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
     });
 
+
     this.Then(/^the "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
         general.isElementAttributePresent(element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
     });
 
-    this.Then(/^I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/, function (num, element_name, next) {
+    this.Then(/^I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/, function (count, element_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
-            .then(() => {
-            waitFor(() => {
-            return general.getNumberOfElements(element_selector).should.eventually.equal(parseInt(num));
-        }).should.notify(next)
-    });
+        pageObjects.waitForElementsToLoad(element_selector)
+            .then(function () {
+                return waitFor(() => {
+                        return general.getElementsCount(element_selector).should.eventually.equal(parseInt(count));
+                    })
+            }).should.notify(next);
     });
 
+    this.Given(/^I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (second_element_index, second_element, main_element_index, main_element, next) {
+        const main_element_selector = pageObjects.elementFor(main_element);
+        const secondary_element_selector = pageObjects.elementFor(second_element);
+        const main_index = parseInt(main_element_index) - 1;
+        const secondary_index = parseInt(second_element_index) - 1;
+        pageObjects.waitForElementAtIndexToLoad(main_index, main_element_selector)
+            .then(function () {
+                return waitFor(() => {
+                        return general.checkElementAtIndexWithInElementAtIndexDisplayed(secondary_index, secondary_element_selector, main_index, main_element_selector).should.eventually.be.true.and.notify(next);
+                })
+            }).should.notify(next);
+    });
 
     this.Then(/^I scroll down (\d+)$/, function (scroll_amount, next) {
         general.scrollDown(scroll_amount)

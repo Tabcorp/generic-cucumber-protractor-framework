@@ -9,6 +9,7 @@ FORM STEPS
 
     Then I fill in the "([^"]*)" input with "([^"]*)"
     Then I select the "([^"]*)" as "([^"]*)"
+    Then the "([^"]*)" input should equal the value "([^"]*)"
    
     
 GENERAL STEPS
@@ -19,6 +20,8 @@ GENERAL STEPS
 #### Single element ####
 
     When I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page
+    When I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
+    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
     When I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)" "([^"]*)"
     When I click the "([^"]*)" (?:button|link|icon|element)
     And I click the "([^"]*)"
@@ -27,6 +30,7 @@ GENERAL STEPS
 #### Element at Index ####
     
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page
+    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
     When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
     
@@ -60,6 +64,7 @@ GENERAL STEPS
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element
+    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"
     
@@ -85,6 +90,9 @@ STORED STEPS
 
 #### Single element ####
 
+    When I store the number of "([^"]*)" as "([^"]*)"
+    When I store the "([^"]*)" input value as "([^"]*)"
+    When I store each "([^"]*)" "([^"]*)" element attribute as "([^"]*)" for the "([^"]*)"
     Then the "([^"]*)" contains the stored "([^"]*)"
         
 #### Element at Index ####
@@ -93,6 +101,9 @@ STORED STEPS
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"
+    When I store the last "([^"]*)" as "([^"]*)"
+    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the text for "([^"]*)"
+    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the stored "([^"]*)"
     

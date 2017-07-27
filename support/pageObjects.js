@@ -12,6 +12,13 @@ const elementFor = function (element_name) {
   return combined_page_obj[element_name] || element_name
 };
 
+var elementPageFor = function () {
+    return require('../definitions//elements.json');
+};
+const elementTypeFor = function (element_type) {
+    return elementPageFor()[element_type];
+};
+
 const waitForElementToLoad = function (element_selector) {
   let current_element = null;
   return waitFor(() => {
@@ -22,6 +29,16 @@ const waitForElementToLoad = function (element_selector) {
   });
 };
 
+const waitForElementsToLoad = function (element_selector) {
+    let current_element = null;
+    return waitFor(() => {
+            current_element = general.getElements(element_selector);
+    return current_element.isPresent().should.eventually.be.true;
+}).then(function () {
+        return current_element;
+    });
+}
+
 const waitForElementAtIndexToLoad = function (indexText, element_selector) {
   let current_element = null;
   return waitFor(() => {
@@ -30,6 +47,36 @@ const waitForElementAtIndexToLoad = function (indexText, element_selector) {
   }).then(function () {
     return current_element;
   });
+};
+
+const waitForElementAtLastIndexToLoad = function (element_selector) {
+    let current_element = null;
+    return waitFor(() => {
+            current_element = general.getElementAtLastIndex(element_selector);
+    return current_element.isPresent().should.eventually.be.true;
+}).then(function () {
+        return current_element;
+    });
+};
+
+const waitForElementWithTextToLoad = function (element_type, text) {
+    let current_element = null;
+    return waitFor(() => {
+            current_element = general.getElementByText(element_type, text);
+    return current_element.isPresent().should.eventually.be.true;
+    }).then(function () {
+        return current_element;
+    });
+}
+
+const waitForElementWithTextAtIndexToLoad = function (element_type, index, text) {
+    let current_element = null;
+    return waitFor(() => {
+            current_element = general.getElementByTextAtIndex(element_type, text);
+    return current_element.isPresent().should.eventually.be.true;
+    }).then(function () {
+        return current_element;
+    });
 };
 
 const waitForElementWithinElementAtIndexToLoad = function (indexText, main_element_selector, secondary_element_selector) {
@@ -52,7 +99,12 @@ const waitForElementHover = function (element_name) {
 };
 
 module.exports.elementFor = elementFor;
+module.exports.waitForElementsToLoad = waitForElementsToLoad;
+module.exports.elementTypeFor = elementTypeFor;
 module.exports.waitForElementToLoad = waitForElementToLoad;
 module.exports.waitForElementAtIndexToLoad = waitForElementAtIndexToLoad;
+module.exports.waitForElementAtLastIndexToLoad = waitForElementAtLastIndexToLoad;
+module.exports.waitForElementWithTextToLoad = waitForElementWithTextToLoad;
+module.exports.waitForElementWithTextAtIndexToLoad = waitForElementWithTextAtIndexToLoad;
 module.exports.waitForElementWithinElementAtIndexToLoad = waitForElementWithinElementAtIndexToLoad;
 module.exports.waitForElementHover = waitForElementHover;

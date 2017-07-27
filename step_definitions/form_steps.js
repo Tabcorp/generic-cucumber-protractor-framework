@@ -27,5 +27,12 @@ module.exports = function () {
             });
     });
 
+    this.Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, function (element_name, value, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function(current_element) {
+                current_element.getAttribute('value').should.eventually.equal(value).and.notify(next);
+            });
+    });
 
 }

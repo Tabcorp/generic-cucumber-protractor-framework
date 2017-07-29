@@ -65,6 +65,13 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToBeClickable(element_selector)
+            .then(() => general.getElement(element_selector).click())
+        .should.notify(next);
+    });
+
     this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (indexText, element_type, current_text, page_name, next) {
         const index = parseInt(indexText) - 1;
         const current_url = page.getPageURL(page_name);
@@ -97,12 +104,6 @@ module.exports = function () {
             }).should.notify(next);
     });
 
-    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
-            .then(() => general.getElement(element_selector).click())
-        .should.notify(next);
-    });
 
     this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (indexText, button, next) {
         const index = parseInt(indexText) - 1;

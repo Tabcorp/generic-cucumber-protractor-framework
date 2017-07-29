@@ -103,10 +103,10 @@ module.exports = function() {
             .then(function () {
                 return waitFor(() => {
                         return general.getElementAtIndexWithElementType(element_selector, index, element_type).getAttribute(element_attribute).then(function (retrieved_text) {
-                        console.log(retrieved_text);
-                        stored_data.setData(name, retrieved_text);
+                            console.log(retrieved_text);
+                            stored_data.setData(name, retrieved_text);
                         })
-                })
+                    })
             }).should.notify(next);
     });
 
@@ -164,6 +164,22 @@ module.exports = function() {
                             var retrieved_stored_value = stored_data.getData(name);
                             console.log(retrieved_text);
                             retrieved_stored_value.toString().should.not.include(retrieved_text);
+                        })
+                    })
+            }).should.notify(next);
+    });
+
+    this.Then(/^I store the "([^"]*)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)" within the "([^"]*)" "([^"]*)"$/, function (secondary_element_index, secondary_element_name, element_type, name, main_element_index, main_element_name, next) {
+        var current_main_element = pageObjects.elementFor(main_element_name);
+        var current_secondary_element = pageObjects.elementFor(secondary_element_name);
+        var current_main_element_index = parseInt(main_element_index) - 1;
+        var current_secondary_element_index = parseInt(secondary_element_index) - 1;
+        pageObjects.waitForElementAtIndexToLoad(current_main_element_index, current_main_element)
+            .then(function () {
+                return waitFor(() => {
+                        return general.getElementIndexWithElementTypeWithinElementAtIndex(current_main_element, current_main_element_index, element_type, current_secondary_element, current_secondary_element_index).getText().then(function (retrieved_text) {
+                            console.log(retrieved_text)
+                            stored_data.setData(name, retrieved_text);
                         })
                     })
             }).should.notify(next);

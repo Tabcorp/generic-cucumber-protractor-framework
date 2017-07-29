@@ -1,19 +1,27 @@
 var pageObjects = require('../support/pageObjects');
+var general = require('../support/general')
 var form = require('../support/form');
 
 module.exports = function () {
 
-  this.Then(/I fill in the "([^"]*)" input with "([^"]*)"$/, function (element_name, value, next) {
-    var element_selector = pageObjects.elementFor(element_name);
-    pageObjects.waitForElementToLoad(element_selector)
-      .then(function (current_element) {
-        current_element.sendKeys(value).then(() => {
-          next();
-        }, (err) => {
-          next(err);
-        });
-      });
-  });
+    this.Then(/^I click the "([^"]*)" (?:input|select|textarea|checkbox)$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(() => general.getElement(element_selector).click())
+        .should.notify(next);
+    });
+
+    this.Then(/I fill in the "([^"]*)" input with "([^"]*)"$/, function (element_name, value, next) {
+        var element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function (current_element) {
+                current_element.sendKeys(value).then(() => {
+                    next();
+            }, (err) => {
+                    next(err);
+                });
+            });
+    });
 
     this.Then(/I select the "([^"]*)" as "([^"]*)"$/, function (element_name, value, next)  {
         var element_selector = pageObjects.elementFor(element_name);

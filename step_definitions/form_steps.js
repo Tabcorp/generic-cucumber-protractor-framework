@@ -1,14 +1,18 @@
 var pageObjects = require('../support/pageObjects');
 var general = require('../support/general')
 var form = require('../support/form');
+const waitFor = require('../support/waitFor');
 
 module.exports = function () {
 
     this.Then(/^I click the "([^"]*)" (?:input|select|textarea|checkbox)$/, function (element_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         pageObjects.waitForElementToLoad(element_selector)
-            .then(() => general.getElement(element_selector).click())
-        .should.notify(next);
+            .then(function (current_element) {
+                return waitFor(() => {
+                        return current_element.click();
+            })
+            }).should.notify(next);
     });
 
     this.Then(/I fill in the "([^"]*)" input with "([^"]*)"$/, function (element_name, value, next) {

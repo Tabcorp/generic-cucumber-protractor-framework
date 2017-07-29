@@ -68,8 +68,11 @@ module.exports = function () {
     this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         pageObjects.waitForElementToBeClickable(element_selector)
-            .then(() => general.getElement(element_selector).click())
-        .should.notify(next);
+            .then(function (current_element) {
+                return waitFor(() => {
+                        return current_element.click();
+                })
+            }).should.notify(next);
     });
 
     this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (indexText, element_type, current_text, page_name, next) {

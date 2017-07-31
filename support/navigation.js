@@ -10,6 +10,15 @@ var getBaseUrl = function (route) {
     return `${baseUrl}${route}`;
 };
 
+var baseAPIUrl = function (route) {
+    switch(getEnvironment()) {
+        case 'local':
+            var baseAPIUrl = process.env.LOCAL_API_ROUTE || "https://uat2-api.test.sunbets.co.uk/v1/";
+            break;
+    }
+    return `${baseAPIUrl}${route}`;
+}
+
 var webServer = function () {
     return process.env.WEB_SERVER || 'localhost';
 };
@@ -35,6 +44,11 @@ const getPageByURL = function(page, stored_value) {
     return getBaseUrl(route);
 };
 
+const getApiRoot = function(route) {
+    return baseAPIUrl(route);
+};
+
+
 const getEnvironment = function() {
     var build_environment = process.env.BUILD_ENVIRONMENT || "local";
     return build_environment;
@@ -42,4 +56,5 @@ const getEnvironment = function() {
 
 module.exports.getPage = getPage;
 module.exports.getPageByURL = getPageByURL;
+module.exports.getApiRoot = getApiRoot;
 module.exports.getEnvironment = getEnvironment;

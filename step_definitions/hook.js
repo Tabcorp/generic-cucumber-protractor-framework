@@ -24,9 +24,11 @@ module.exports = function () {
 
     // After hook for each step
     this.After(function (scenario, next) {
+        //clean stored data
         stored_data.deleteData()
         browser.executeScript('window.localStorage.clear();');
 
+        //on failure create screenshot
         if (scenario.isFailed()) {
             browser.takeScreenshot().then(function(png) {
                 var scenario_name = scenario.getName().replace(/\s+/g,"_");

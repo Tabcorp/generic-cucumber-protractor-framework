@@ -10,7 +10,7 @@ module.exports = function () {
     this.When(/^I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (element_name, page_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const current_url = page.getPageURL(page_name);
-        pageObjects.waitForElementToLoad(element_selector)
+        pageObjects.waitForElementToBeClickable(element_selector)
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.click();
@@ -30,7 +30,7 @@ module.exports = function () {
         const index = parseInt(indexText) - 1;
         const element_selector = pageObjects.elementFor(element_name);
         const current_url = page.getPageURL(page_name);
-        pageObjects.waitForElementAtIndexToLoad(index, element_selector)
+        pageObjects.waitForElementToBeClickable(index, element_selector)
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.click();
@@ -44,6 +44,25 @@ module.exports = function () {
                         })
                     });
             }).should.notify(next);
+    });
+
+
+    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToBeClickable(element_selector)
+            .then(function (current_element) {
+                return waitFor(() => {
+                        return current_element.click();
+                })
+            }).should.notify(next);
+    });
+
+    this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (indexText, button, next) {
+        const index = parseInt(indexText) - 1;
+        const element_selector = pageObjects.elementFor(button);
+        pageObjects.waitForElementToBeClickable(element_selector)
+            .then(() => general.getElementAtIndex(index, element_selector).click())
+        .should.notify(next);
     });
 
     this.Then(/^I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (element_type, current_text, page_name, next) {
@@ -62,16 +81,6 @@ module.exports = function () {
                             url.toLowerCase().should.contain(current_url);
                         })
                     });
-            }).should.notify(next);
-    });
-
-    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToBeClickable(element_selector)
-            .then(function (current_element) {
-                return waitFor(() => {
-                        return current_element.click();
-                })
             }).should.notify(next);
     });
 
@@ -108,13 +117,6 @@ module.exports = function () {
     });
 
 
-    this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (indexText, button, next) {
-        const index = parseInt(indexText) - 1;
-        const element_selector = pageObjects.elementFor(button);
-        pageObjects.waitForElementToLoad(element_selector)
-            .then(() => general.getElementAtIndex(index, element_selector).click())
-        .should.notify(next);
-    });
 
     this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element$/, function (indexText, main_element, second_element, next) {
         const index = parseInt(indexText) - 1;

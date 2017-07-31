@@ -4,6 +4,17 @@
 
 ###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - <a href="https://au.linkedin.com/in/cambradley">Cameron Bradley</a>
 
+#### Environment Variables ####
+
+##### You will need to set the below in CI:
+
+WEB_SERVER - default = localhost <br />
+WEB_PORT - default = 9000 <br />
+BUILD_ENVIRONMENT - default = local <br />
+LOCAL_API_ROUTE - default = https://uat2-api.test.sunbets.co.uk/v1/
+
+# Cucumber steps available
+
 FORM STEPS
 ----------
 

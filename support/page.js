@@ -65,7 +65,6 @@ const getPage = function () {
 
 const getPageURL = function (page_name = current_page) {
   const json_file_name = page_name.replace(/ /g, "_");
-  console.log(json_file_name );
   return pageFor("pages")[json_file_name];
 };
 

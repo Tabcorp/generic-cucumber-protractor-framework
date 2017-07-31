@@ -37,7 +37,6 @@ module.exports = function() {
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.getText().then(function (ui_text) {
-                            console.log(ui_text)
                             stored_data.setData(name, ui_text);
                         })
                     })
@@ -103,7 +102,6 @@ module.exports = function() {
             .then(function () {
                 return waitFor(() => {
                         return general.getElementAtIndexWithElementType(element_selector, index, element_type).getAttribute(element_attribute).then(function (retrieved_text) {
-                            console.log(retrieved_text);
                             stored_data.setData(name, retrieved_text);
                         })
                     })
@@ -131,7 +129,6 @@ module.exports = function() {
             .then(function () {
                 return waitFor(() => {
                         return general.getElementAtIndexWithElementType(element_selector, index, element_type).getAttribute(element_attribute).then(function (retrieved_text) {
-                            console.log(retrieved_text);
                             var retrieved_stored_value = stored_data.getData(name);
                             retrieved_stored_value.toString().should.include(retrieved_text);
                         })
@@ -177,7 +174,6 @@ module.exports = function() {
                 return waitFor(() => {
                         return general.getElementIndexWithElementTypeWithinElementAtIndex(current_main_element, current_main_element_index, element_type, current_secondary_element, current_secondary_element_index).getText().then(function (retrieved_text) {
                             var retrieved_stored_value = stored_data.getData(name);
-                            console.log(retrieved_text);
                             retrieved_stored_value.toString().should.not.include(retrieved_text);
                         })
                     })
@@ -193,7 +189,6 @@ module.exports = function() {
             .then(function () {
                 return waitFor(() => {
                         return general.getElementIndexWithElementTypeWithinElementAtIndex(current_main_element, current_main_element_index, element_type, current_secondary_element, current_secondary_element_index).getText().then(function (retrieved_text) {
-                            console.log(retrieved_text)
                             stored_data.setData(name, retrieved_text);
                         })
                     })

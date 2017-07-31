@@ -13,7 +13,7 @@ var getBaseUrl = function (route) {
 var baseAPIUrl = function (route) {
     switch(getEnvironment()) {
         case 'local':
-            var baseAPIUrl = process.env.LOCAL_API_ROUTE || "https://uat2-api.test.sunbets.co.uk/v1/";
+            var baseAPIUrl = process.env.LOCAL_API_ROUTE;
             break;
     }
     return `${baseAPIUrl}${route}`;
@@ -34,7 +34,6 @@ var elementFor = function (page, page_type) {
 
 const getPage = function (page) {
     var route = elementFor("pages", page);
-    console.log(getBaseUrl(route));
     return getBaseUrl(route);
 };
 

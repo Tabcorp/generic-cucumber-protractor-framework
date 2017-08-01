@@ -2,7 +2,7 @@ var navigation = require('./navigation');
 
 var tagsForEnvironment = function (suite_tag) {
     switch(navigation.getEnvironment()) {
-        case 'local':
+        case 'localhost':
             var tags = [suite_tag, '~@wip'];
             break;
     }

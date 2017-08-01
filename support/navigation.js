@@ -3,7 +3,7 @@ const BASE_URL_TEMPLATE = "http://server:port";
 
 var getBaseUrl = function (route) {
     switch(getEnvironment()) {
-        case 'local':
+        case 'localhost':
             var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
             break;
     }
@@ -12,7 +12,7 @@ var getBaseUrl = function (route) {
 
 var baseAPIUrl = function (route) {
     switch(getEnvironment()) {
-        case 'local':
+        case 'localhost':
             var baseAPIUrl = process.env.LOCAL_API_ROUTE;
             break;
     }
@@ -49,8 +49,8 @@ const getApiRoot = function(route) {
 
 
 const getEnvironment = function() {
-    var build_environment = process.env.BUILD_ENVIRONMENT || "local";
-    return build_environment;
+    var web_server = process.env.WEB_SERVER || "localhost";
+    return web_server;
 };
 
 module.exports.getPage = getPage;

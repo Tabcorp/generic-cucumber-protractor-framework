@@ -10,7 +10,6 @@
 
 WEB_SERVER - default = localhost <br />
 WEB_PORT - default = 9000 <br />
-BUILD_ENVIRONMENT - default = local <br />
 LOCAL_API_ROUTE - default = blank
 
 # Cucumber steps available

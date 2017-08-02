@@ -13,7 +13,7 @@ const elementFor = function (element_name) {
 };
 
 var elementPageFor = function () {
-    return require('../definitions/elements.json');
+    return require('../definitions//elements.json');
 };
 const elementTypeFor = function (element_type) {
     return elementPageFor()[element_type];

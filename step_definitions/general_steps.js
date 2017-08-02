@@ -116,8 +116,6 @@ module.exports = function () {
             }).should.notify(next);
     });
 
-
-
     this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element$/, function (indexText, main_element, second_element, next) {
         const index = parseInt(indexText) - 1;
         const main_element_selector = pageObjects.elementFor(main_element);
@@ -235,6 +233,7 @@ module.exports = function () {
             .then(function () {
                 return waitFor(() => {
                         return general.checkTextAtIndexIsPresent(element_selector, index).getText().then(function (ui_text) {
+                            console.log(ui_text)
                             const current_text = ui_text;
                             return current_text.should.contain(text);
                         })
@@ -347,6 +346,18 @@ module.exports = function () {
                 return waitFor(() => {
                         return general.getElementsCount(element_selector).should.eventually.equal(parseInt(count));
                     })
+            }).should.notify(next);
+    });
+
+    this.Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (count, second_element, main_element_index, main_element, next) {
+        const main_index = parseInt(main_element_index) - 1;
+        const main_element_selector = pageObjects.elementFor(main_element);
+        const secondary_element_selector = pageObjects.elementFor(second_element);
+        pageObjects.waitForElementAtIndexToLoad(main_index, main_element_selector)
+            .then(function () {
+                return waitFor(() => {
+                        return general.getElementsWithinElementAtIndexCount(main_index, main_element_selector, secondary_element_selector).should.eventually.equal(parseInt(count));
+            })
             }).should.notify(next);
     });
 

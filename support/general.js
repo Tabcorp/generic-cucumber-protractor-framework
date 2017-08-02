@@ -45,6 +45,11 @@ const getElements = function (element_selector) {
     return element.all(this.css(element_selector));
 };
 
+const getElementsWithInElementAtIndex = function (secondary_element_selector, main_element_index, main_element_selector) {
+    const parent = element.all(this.css(main_element_selector)).get(main_element_index);
+    return parent.all(this.css(secondary_element_selector))
+};
+
 const findElement = function (element_selector) {
     return browser.driver.findElement(this.css(element_selector));
 };
@@ -121,6 +126,11 @@ const getNumberOfElements = function(element_selector) {
 
 const getElementsCount = function(element_selector) {
     return element.all(this.css(element_selector)).count();
+};
+
+const getElementsWithinElementAtIndexCount = function (index, main_element_selector, secondary_element_selector) {
+    const parent = element.all(this.css(main_element_selector)).get(index);
+    return parent.all(this.css(secondary_element_selector)).count();
 };
 
 const getElementsCountWithInParentElementAtIndex = function (index, main_element_selector, secondary_element_selector) {
@@ -258,6 +268,7 @@ module.exports.hasAttribute = hasAttribute;
 module.exports.hasAttributes = hasAttributes;
 module.exports.hasText = hasText;
 module.exports.getElements = getElements;
+module.exports.getElementsWithInElementAtIndex = getElementsWithInElementAtIndex;
 module.exports.findElement = findElement;
 module.exports.getElementByText = getElementByText;
 module.exports.getElementByTextAtIndex = getElementByTextAtIndex;
@@ -271,6 +282,7 @@ module.exports.getElementIndexWithElementTypeWithinElementAtIndex = getElementIn
 module.exports.isElementTextAtIndexPresent = isElementTextAtIndexPresent;
 module.exports.getNumberOfElements = getNumberOfElements;
 module.exports.getElementsCount = getElementsCount;
+module.exports.getElementsWithinElementAtIndexCount = getElementsWithinElementAtIndexCount;
 module.exports.getElementsCountWithInParentElementAtIndex = getElementsCountWithInParentElementAtIndex;
 module.exports.isElementTextPresent = isElementTextPresent;
 module.exports.checkElementTextAtIndexIsPresent = checkElementTextAtIndexIsPresent;

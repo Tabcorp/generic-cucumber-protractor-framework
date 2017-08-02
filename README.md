@@ -4,6 +4,57 @@
 
 ###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - <a href="https://au.linkedin.com/in/cambradley">Cameron Bradley</a>
 
+## Folder Structure
+
+### Your Project:
+
+./e2e
+ * /config
+ * /features
+   * custom_steps
+     * custom_steps.js
+   * definitions
+     * pages
+        * pages.json
+        * page_name.json
+   * feature.feature
+
+### The Common Repository:
+
+../../node_modules/generic-cucumber-protractor-framework/step_definitions
+ * /definitions
+    * elements.js
+ * /fake_data
+ * /node_modules
+ * /step_definitions
+   * env.js
+   * fake_data_steps.js
+   * form_steps.js
+   * general_steps.js
+   * hooks.js
+   * navigation_steps.js
+   * rest_steps.js
+   * stored_steps.js
+   * table_steps.js  
+ * /support
+     * browsers.js
+     * fake_data.js
+     * form.js
+     * general.js
+     * helpers.js
+     * json_path.js
+     * navigation.js
+     * page.js
+     * pageObjects.js
+     * request.js
+     * restConfig.js
+     * step_definitions_manager.js
+     * stored_data.js
+     * tag_manager.js
+     * waitFor.js
+   
+
+
 #### Environment Variables ####
 
 ##### You will need to set the below in CI:
@@ -64,6 +115,7 @@ GENERAL STEPS
     Then the "([^"]*)" contains the value "([^"]*)"
     Then the "([^"]*)" contains no text
     Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)
+    Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
     
 #### Element at Index ####
     
@@ -111,6 +163,7 @@ STORED STEPS
         
 #### Element at Index ####
         
+    When I store the number of "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"     
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)"

@@ -1,4 +1,4 @@
 module.exports = function () {
   // Set step timeout to be 1 minute
-  this.setDefaultTimeout(60 * 1000);
+  this.setDefaultTimeout(100 * 1000);
 };

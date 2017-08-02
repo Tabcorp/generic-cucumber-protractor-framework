@@ -17,6 +17,20 @@ module.exports = function() {
             }).should.notify(next);
     });
 
+    this.Given(/^I store the number of "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"$/, function (secondary_element, main_element_index, main_element, number_name, next) {
+        const current_secondary_element_selector = pageObjects.elementFor(secondary_element);
+        const current_main_element_index = parseInt(main_element_index) - 1;
+        const current_main_element_selector = pageObjects.elementFor(main_element);
+        pageObjects.waitForElementAtIndexToLoad(current_main_element_index, current_main_element_selector)
+            .then(function () {
+                return waitFor(() => {
+                        return general.getElementsWithInElementAtIndex(current_secondary_element_selector, current_main_element_index, current_main_element_selector).count().then(function (count) {
+                            console.log(count);
+                            stored_data.setData(number_name, count);
+                        })
+                    })
+            }).should.notify(next);
+    });
 
     this.When(/^I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"$/, function (indexText, element_name, name, next) {
         const element_selector = pageObjects.elementFor(element_name);

@@ -40,6 +40,18 @@ const waitForElementToBeClickable = function (element_selector) {
     });
 };
 
+const waitForElementAtIndexToBeClickable = function (index, element_selector) {
+    var EC = protractor.ExpectedConditions;
+    let current_element = null;
+    return waitFor(() => {
+            current_element = general.getElementAtIndex(index, element_selector);
+    return browser.wait(EC.elementToBeClickable(current_element), 5000);
+}).then(function () {
+        return current_element;
+    });
+};
+
+
 const waitForElementsToLoad = function (element_selector) {
     let current_element = null;
     return waitFor(() => {
@@ -112,6 +124,7 @@ const waitForElementHover = function (element_name) {
 module.exports.elementFor = elementFor;
 module.exports.waitForElementsToLoad = waitForElementsToLoad;
 module.exports.waitForElementToBeClickable = waitForElementToBeClickable;
+module.exports.waitForElementAtIndexToBeClickable = waitForElementAtIndexToBeClickable;
 module.exports.elementTypeFor = elementTypeFor;
 module.exports.waitForElementToLoad = waitForElementToLoad;
 module.exports.waitForElementAtIndexToLoad = waitForElementAtIndexToLoad;

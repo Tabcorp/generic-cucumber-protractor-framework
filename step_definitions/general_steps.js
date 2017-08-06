@@ -233,7 +233,6 @@ module.exports = function () {
             .then(function () {
                 return waitFor(() => {
                         return general.checkTextAtIndexIsPresent(element_selector, index).getText().then(function (ui_text) {
-                            console.log(ui_text)
                             const current_text = ui_text;
                             return current_text.should.contain(text);
                         })

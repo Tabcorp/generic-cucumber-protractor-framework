@@ -25,7 +25,6 @@ module.exports = function() {
                 stored_data.setData(store_name, json_value);
                 next();
             }).catch(function(err){
-            console.log(err);
             next(err);
         })
 

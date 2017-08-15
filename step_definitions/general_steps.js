@@ -61,8 +61,11 @@ module.exports = function () {
         const index = parseInt(indexText) - 1;
         const element_selector = pageObjects.elementFor(button);
         pageObjects.waitForElementAtIndexToBeClickable(index, element_selector)
-            .then(() => general.getElementAtIndex(index, element_selector).click())
-        .should.notify(next);
+            .then(function(current_element) {
+                return waitFor(() => {
+                        return current_element.click()
+                    })
+            }).should.notify(next);
     });
 
     this.Then(/^I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (element_type, current_text, page_name, next) {
@@ -174,7 +177,7 @@ module.exports = function () {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
         if (negate) {
-            general.checkElementAtIndexIsNotDisplayedd(index, element_selector).should.notify(next);
+            general.checkElementAtIndexIsNotDisplayed(index, element_selector).should.notify(next);
         } else {
             general.checkElementAtIndexIsDisplayed(index, element_selector).should.notify(next);
         }

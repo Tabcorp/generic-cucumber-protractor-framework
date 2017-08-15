@@ -6,6 +6,9 @@ var getBaseUrl = function (route) {
         case 'localhost':
             var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
             break;
+        case 'production':
+            var baseUrl = process.env.PRODUCTION_UI_ROUTE;
+            break;
     }
     return `${baseUrl}${route}`;
 };

@@ -323,7 +323,7 @@ module.exports = function () {
         general.isElementAttributesPresent(element_selector, attribute_type, attribute).should.notify(next);
     });
 
-    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (indexText, element, attribute_type, attribute, next) {
+    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (indexText, element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
         general.checkClassAtIndexIsPresent(index, element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);

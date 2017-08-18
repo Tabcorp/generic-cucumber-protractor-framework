@@ -25,7 +25,6 @@ module.exports = function() {
             .then(function () {
                 return waitFor(() => {
                         return general.getElementsWithInElementAtIndex(current_secondary_element_selector, current_main_element_index, current_main_element_selector).count().then(function (count) {
-                            console.log(count);
                             stored_data.setData(number_name, count);
                         })
                     })
@@ -63,7 +62,6 @@ module.exports = function() {
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.getText().then(function (ui_text) {
-                            console.log(ui_text)
                             stored_data.setData(name, ui_text);
                         })
                     })
@@ -129,7 +127,6 @@ module.exports = function() {
             .then(function () {
                 return waitFor(() => {
                         return general.getElementAtIndexWithElementType(element_selector, index, element_type).getText().then(function (retrieved_text) {
-                            console.log(retrieved_text)
                             stored_data.setData(name, retrieved_text);
                         })
                     })

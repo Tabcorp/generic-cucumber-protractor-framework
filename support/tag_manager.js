@@ -5,6 +5,9 @@ var tagsForEnvironment = function (suite_tag) {
         case 'localhost':
             var tags = [suite_tag, '~@wip'];
             break;
+        case 'production':
+            var tags = [suite_tag, '~@wip'];
+            break;
     }
     return tags
 };

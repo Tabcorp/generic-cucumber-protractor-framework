@@ -61,8 +61,11 @@ module.exports = function () {
         const index = parseInt(indexText) - 1;
         const element_selector = pageObjects.elementFor(button);
         pageObjects.waitForElementAtIndexToBeClickable(index, element_selector)
-            .then(() => general.getElementAtIndex(index, element_selector).click())
-        .should.notify(next);
+            .then(function(current_element) {
+                return waitFor(() => {
+                        return current_element.click()
+                    })
+            }).should.notify(next);
     });
 
     this.Then(/^I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (element_type, current_text, page_name, next) {
@@ -174,7 +177,7 @@ module.exports = function () {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
         if (negate) {
-            general.checkElementAtIndexIsNotDisplayedd(index, element_selector).should.notify(next);
+            general.checkElementAtIndexIsNotDisplayed(index, element_selector).should.notify(next);
         } else {
             general.checkElementAtIndexIsDisplayed(index, element_selector).should.notify(next);
         }
@@ -233,7 +236,6 @@ module.exports = function () {
             .then(function () {
                 return waitFor(() => {
                         return general.checkTextAtIndexIsPresent(element_selector, index).getText().then(function (ui_text) {
-                            console.log(ui_text)
                             const current_text = ui_text;
                             return current_text.should.contain(text);
                         })
@@ -321,7 +323,7 @@ module.exports = function () {
         general.isElementAttributesPresent(element_selector, attribute_type, attribute).should.notify(next);
     });
 
-    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (indexText, element, attribute_type, attribute, next) {
+    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (indexText, element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
         general.checkClassAtIndexIsPresent(index, element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);

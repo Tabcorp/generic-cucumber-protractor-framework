@@ -60,7 +60,7 @@
 ##### You will need to set the below in CI:
 
 WEB_SERVER - default = localhost <br />
-WEB_PORT - default = 9000 <br />
+WEB_SERVER_PORT - default = 9000 <br />
 LOCAL_API_ROUTE - default = blank
 
 # Cucumber steps available

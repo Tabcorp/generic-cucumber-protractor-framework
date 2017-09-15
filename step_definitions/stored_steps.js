@@ -133,7 +133,7 @@ module.exports = function() {
             }).should.notify(next);
     });
 
-    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute contains the "([^"]*)"$/, function (indexText, element_name, element_type, element_attribute, name, next) {
+    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute contains the stored text for "([^"]*)"$/, function (indexText, element_name, element_type, element_attribute, name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
         pageObjects.waitForElementAtIndexToLoad(index, element_selector)
@@ -147,7 +147,7 @@ module.exports = function() {
             }).should.notify(next);
     });
 
-    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the stored text for "([^"]*)"$/, function (indexText, element_name, element_type, name, next) {
+    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the stored text for "([^"]*)"$/, function (indexText, element_name, element_type, name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
         pageObjects.waitForElementAtIndexToLoad(index, element_selector)

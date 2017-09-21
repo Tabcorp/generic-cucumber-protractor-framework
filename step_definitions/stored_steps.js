@@ -189,7 +189,7 @@ module.exports = function() {
             }).should.notify(next);
     });
 
-    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the text for "([^"]*)"$/, function (main_element_index, main_element_name, element_type, secondary_element_index, secondary_element_name, name, next) {
+    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the stored text for "([^"]*)"$/, function (main_element_index, main_element_name, element_type, secondary_element_index, secondary_element_name, name, next) {
         var current_main_element = pageObjects.elementFor(main_element_name);
         var current_secondary_element = pageObjects.elementFor(secondary_element_name);
         var current_main_element_index = parseInt(main_element_index) - 1;

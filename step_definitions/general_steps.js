@@ -107,7 +107,7 @@ module.exports = function () {
             }).should.notify(next);
     });
 
-    this.Given(/^I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)" "([^"]*)"$/, function (second_element, indexText, main_element, next) {
+    this.Given(/^I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (second_element, indexText, main_element, next) {
         const index = parseInt(indexText) - 1;
         const main_element_selector = pageObjects.elementFor(main_element);
         const secondary_element_selector = pageObjects.elementFor(second_element);

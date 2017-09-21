@@ -1,0 +1,118 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/bradleyca/.nvm/versions/node/v6.9.2/bin/node',
+1 verbose cli   '/Users/bradleyca/.nvm/versions/node/v6.9.2/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.9
+3 info using node@v6.9.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/bradleyca/code/generic-cucumber-protractor-framework',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/bradleyca/.npm correctMkdir not in flight; initializing
+10 info lifecycle generic-cucumber-protractor-framework@1.2.2~prepublish: generic-cucumber-protractor-framework@1.2.2
+11 silly lifecycle generic-cucumber-protractor-framework@1.2.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package.tgz',
+12 verbose tar pack   '/Users/bradleyca/code/generic-cucumber-protractor-framework' ]
+13 verbose tarball /Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package.tgz
+14 verbose folder /Users/bradleyca/code/generic-cucumber-protractor-framework
+15 verbose addLocalTarball adding from inside cache /Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package.tgz
+16 verbose correctMkdir /Users/bradleyca/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd generic-cucumber-protractor-framework@1.2.2
+18 verbose afterAdd /Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/bradleyca/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package/package.json written
+21 silly publish { name: 'generic-cucumber-protractor-framework',
+21 silly publish   version: '1.2.2',
+21 silly publish   description: 'Generic Cucumber Protractor Automation Framework',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/Tabcorp/generic-cucumber-protractor-framework.git' },
+21 silly publish   keywords: [ 'Automation' ],
+21 silly publish   author:
+21 silly publish    { name: 'Cameron Bradley',
+21 silly publish      email: 'cameron.bradley@tabcorp.com.au',
+21 silly publish      url: 'http://www.tabcorp.com.au' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/Tabcorp/generic-cucumber-protractor-framework/issues' },
+21 silly publish   homepage: 'https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme',
+21 silly publish   devDependencies:
+21 silly publish    { JSONPath: '^0.11.2',
+21 silly publish      faker: '^4.1.0',
+21 silly publish      lodash: '^4.17.4',
+21 silly publish      q: '^1.5.0',
+21 silly publish      'request-promise': '^4.2.1' },
+21 silly publish   readme: '# GENERIC CUCUMBER PROTRACTOR FRAMEWORK #\n\n![alt text](http://i65.tinypic.com/fasv1s.jpg)\n\n###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - <a href="https://au.linkedin.com/in/cambradley">Cameron Bradley</a>\n\n## Folder Structure\n\n### Your Project:\n\n./e2e\n * /config\n * /features\n   * custom_steps\n     * custom_steps.js\n   * definitions\n     * pages\n        * pages.json\n        * page_name.json\n   * feature.feature\n\n### The Common Repository:\n\n../../node_modules/generic-cucumber-protractor-framework/step_definitions\n * /definitions\n    * elements.js\n * /fake_data\n * /node_modules\n * /step_definitions\n   * env.js\n   * fake_data_steps.js\n   * form_steps.js\n   * general_steps.js\n   * hooks.js\n   * navigation_steps.js\n   * rest_steps.js\n   * stored_steps.js\n   * table_steps.js  \n * /support\n     * browsers.js\n     * fake_data.js\n     * form.js\n     * general.js\n     * helpers.js\n     * json_path.js\n     * navigation.js\n     * page.js\n     * pageObjects.js\n     * request.js\n     * restConfig.js\n     * step_definitions_manager.js\n     * stored_data.js\n     * tag_manager.js\n     * waitFor.js\n   \n\n\n#### Environment Variables ####\n\n##### You will need to set the below in CI:\n\nWEB_SERVER - default = localhost <br />\nWEB_SERVER_PORTfil - default = 9000 <br />\nLOCAL_API_ROUTE - default = blank\n\n# Cucumber steps available\n\nFORM STEPS\n----------\n\n    Then I fill in the "([^"]*)" input with "([^"]*)"\n    Then I select the "([^"]*)" as "([^"]*)"\n    Then the "([^"]*)" input should equal the value "([^"]*)"\n   \n    \nGENERAL STEPS\n-------------\n\n### Click ###\n\n#### Single element ####\n\n    When I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page\n    When I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page\n    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page\n    When I click the "([^"]*)" (?:button|link|icon|element) within the "([^"]*)" "([^"]*)"\n    When I click the "([^"]*)" (?:button|link|icon|element)\n    And I click the "([^"]*)"\n    And I mouse over "([^"]*)"\n    \n#### Element at Index ####\n    \n    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page\n    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page\n    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)\n    When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"\n    \n### Assertions ###\n\n\n#### Single element ####\n\n    Then the "([^"]*)" element should( not)? be displayed\n    Then the "([^"]*)" element should( not)? be present\n    Then the "([^"]*)" element within the "([^"]*)" should be present\n    Then the "([^"]*)" element should( not)? be enable\n    Then the "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"\n    Then the "([^"]*)" contains the "([^"]*)" attributes "([^"]*)"\n    Then the "([^"]*)" contains the "([^"]*)" text "([^"]*)"\n    Then the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"\n    Then the "([^"]*)" does not contain the "([^"]*)" attributes "([^"]*)"\n    Then the "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"\n    Then the "([^"]*)" contains the text "([^"]*)"\n    Then the "([^"]*)" does not contain the text "([^"]*)"\n    Then the "([^"]*)" contains the value "([^"]*)"\n    Then the "([^"]*)" contains no text\n    Then I can see "(\\d*)" "([^"]*)" (?:buttons|links|icons|elements)\n    Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"\n    \n#### Element at Index ####\n    \n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be displayed\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element\n    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the text for "([^"]*)"\n    \n### Wait and Scroll ###\n    \n    And I wait "([^"]*)" seconds\n    When I scroll down (\\d+)$\n    \n    \nNAVIGATION STEPS\n----------------\n \n    Given I am on the "([^"]*)" page\n    Given I am directed to the "([^"]*)" page\n    Given I set the page to "([^"]*)"\n    Then I see the "([^"]*)" page title\n    When I navigate to the "([^"]*)" page\n    When I navigate directly to the "([^"]*)" page with the stored "([^"]*)"\n \nREST STEPS\n----------\n\n    When I retrieve and store the "(.*)" from "([^"]*)" as "([^"]*)"\n    \nSTORED STEPS\n------------\n\n#### Single element ####\n\n    When I store the number of "([^"]*)" as "([^"]*)"\n    When I store the "([^"]*)" input value as "([^"]*)"\n    When I store each "([^"]*)" "([^"]*)" element attribute as "([^"]*)" for the "([^"]*)"\n    Then the "([^"]*)" contains the stored "([^"]*)"\n        \n#### Element at Index ####\n        \n    When I store the number of "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"     \n    When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"\n    When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"\n    When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)"\n    When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"\n    When I store the last "([^"]*)" as "([^"]*)"\n    When I store the "([^"]*)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)" within the "([^"]*)" "([^"]*)" \n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute contains the stored text for "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute does not contain the stored text for "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the stored text for "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the stored text for "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the text for "([^"]*)"\n    Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the stored "([^"]*)"\n    \nTABLE STEPS\n-----------\n\n    Then the "([^"]*)" table contains the following\n    Then the "([^"]*)" table does not contain the following\n    \nFAKE DATA STEPS\n---------------\n\n    When I fill in the "([^"]*)" input with "([^"]*)" fake data',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '46a04b5f19c862164cb0101b3d9f1d8323ea98f5',
+21 silly publish   _id: 'generic-cucumber-protractor-framework@1.2.2',
+21 silly publish   _shasum: '588f147640c5be8ce1df576ec1d65f0af4d23a32',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name generic-cucumber-protractor-framework
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'generic-cucumber-protractor-framework',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'generic-cucumber-protractor-framework',
+26 silly mapToRegistry   name: 'generic-cucumber-protractor-framework',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/generic-cucumber-protractor-framework
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/bradleyca/.npm/generic-cucumber-protractor-framework/1.2.2/package.tgz
+30 verbose request uri https://registry.npmjs.org/generic-cucumber-protractor-framework
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 2:43:20 PM
+33 verbose request using bearer token for auth
+34 verbose request id 6c50eb8c96b1d904
+35 http request PUT https://registry.npmjs.org/generic-cucumber-protractor-framework
+36 http 403 https://registry.npmjs.org/generic-cucumber-protractor-framework
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '91',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Thu, 21 Sep 2017 04:43:22 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-mel6526-MEL',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1505969001.037310,VS0,VE1033',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating /Users/bradleyca/.npm/registry.npmjs.org/generic-cucumber-protractor-framework on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: You cannot publish over the previously published version 1.2.2. : generic-cucumber-protractor-framework
+40 verbose stack     at makeError (/Users/bradleyca/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/Users/bradleyca/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/Users/bradleyca/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/Users/bradleyca/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/Users/bradleyca/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/Users/bradleyca/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid generic-cucumber-protractor-framework
+43 verbose cwd /Users/bradleyca/code/generic-cucumber-protractor-framework
+44 error Darwin 16.6.0
+45 error argv "/Users/bradleyca/.nvm/versions/node/v6.9.2/bin/node" "/Users/bradleyca/.nvm/versions/node/v6.9.2/bin/npm" "publish"
+46 error node v6.9.2
+47 error npm  v3.10.9
+48 error code E403
+49 error You cannot publish over the previously published version 1.2.2. : generic-cucumber-protractor-framework
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

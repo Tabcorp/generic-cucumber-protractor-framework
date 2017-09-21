@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TabDigital/generic-cucumber-protractor-framework.git"
+    "url": "git+https://github.com/Tabcorp/generic-cucumber-protractor-framework.git"
   },
   "keywords": [
     "Automation"
@@ -16,9 +16,9 @@
   "author": "Cameron Bradley <cameron.bradley@tabcorp.com.au> (http://www.tabcorp.com.au)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TabDigital/generic-cucumber-protractor-framework/issues"
+    "url": "https://github.com/Tabcorp/generic-cucumber-protractor-framework/issues"
   },
-  "homepage": "https://github.com/TabDigital/generic-cucumber-protractor-framework#readme",
+  "homepage": "https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme",
   "devDependencies": {
     "JSONPath": "^0.11.2",
     "faker": "^4.1.0",

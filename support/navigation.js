@@ -1,7 +1,7 @@
 const current_page = require("./page");
 const BASE_URL_TEMPLATE = "http://server:port";
 
-var getBaseUrl = function (route) {
+const getBaseUrl = function (route) {
     switch(getEnvironment()) {
         case 'localhost':
             var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
@@ -30,7 +30,7 @@ var webServerPort = function () {
     return process.env.WEB_SERVER_PORT || '9000';
 };
 
-var elementFor = function (page, page_type) {
+const elementFor = function (page, page_type) {
     page_type = page_type.replace(/ /g,"_");
     return current_page.pageFor(page)[page_type];
 };
@@ -56,6 +56,8 @@ const getEnvironment = function() {
     return web_server;
 };
 
+module.exports.getBaseUrl = getBaseUrl;
+module.exports.elementFor = elementFor;
 module.exports.getPage = getPage;
 module.exports.getPageByURL = getPageByURL;
 module.exports.getApiRoot = getApiRoot;

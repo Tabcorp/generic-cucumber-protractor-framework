@@ -14,6 +14,11 @@ cleanArray = function (array) {
   return cleaned_array
 };
 
+retrieveAsNumber = function (data) {
+    var current_number = data.replace(/\$/g,"");
+    return Number(current_number.replace(/[^0-9\.]+/g,""));
+};
+
 const replaceSpace = function (string) {
     return string.split(' ').join('')
 };
@@ -29,5 +34,6 @@ randomString = function (length) {
 
 module.exports.hasClass = hasClass;
 module.exports.cleanArray = cleanArray;
+module.exports.retrieveAsNumber = retrieveAsNumber;
 module.exports.replaceSpace = replaceSpace;
 module.exports.randomString = randomString;

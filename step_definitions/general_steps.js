@@ -49,6 +49,7 @@ module.exports = function () {
 
     this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
+        console.log(element_selector)
         pageObjects.waitForElementToBeClickable(element_selector)
             .then(function (current_element) {
                 return waitFor(() => {
@@ -140,11 +141,25 @@ module.exports = function () {
         general.checkElementTextAtIndexIsPresent(index, element_selector, attribute_type, text).should.eventually.be.true.and.notify(next);
     });
 
+    this.When(/^I refresh the page$/, function (next) {
+        browser.driver.navigate().refresh().then(browser.sleep(4000)).then(function () {
+            next();
+        })
+    });
 
     this.When(/^I mouse over "([^"]*)"$/, function (element_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         pageObjects.waitForElementHover(element_selector)
             .then(function () {
+                next();
+            });
+    });
+
+    this.Then(/^I hover over the "([^"]*)"$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementHover(element_selector)
+            .then(function () {
+                browser.actions().mouseMove(general.getElement(element_selector));
                 next();
             });
     });
@@ -320,7 +335,10 @@ module.exports = function () {
 
     this.Then(/^the "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
-        general.isElementTextPresent(element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function () {
+                general.isElementTextPresent(element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);
+            });
     });
 
     this.Then(/^the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {

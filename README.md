@@ -60,7 +60,7 @@
 ##### You will need to set the below in CI:
 
 WEB_SERVER - default = localhost <br />
-WEB_SERVER_PORTfil - default = 9000 <br />
+WEB_SERVER_PORT - default = 9000 <br />
 LOCAL_API_ROUTE - default = blank
 
 # Cucumber steps available
@@ -83,6 +83,8 @@ GENERAL STEPS
     When I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page
     When I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
     When I click the "([^"]*)" (?:button|link|icon|element)
+    And I hover over the "([^"]*)"
+    And I refresh the page
     And I click the "([^"]*)"
     And I mouse over "([^"]*)"
     

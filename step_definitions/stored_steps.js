@@ -107,6 +107,7 @@ module.exports = function() {
             }).should.notify(next);
     });
 
+
     this.Then(/^I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"$/, function (indexText, element_name, element_type, element_attribute, name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;

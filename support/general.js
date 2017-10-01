@@ -235,13 +235,13 @@ const checkClassAtIndexIsPresent = function (index, element_selector, attribute_
 
 const isElementAttributePresent = function (element_selector, attribute_type, attribute) {
     return waitFor(() => {
-            return this.hasAttribute(general.getElement(element_selector), attribute_type, attribute).should.eventually.be.true;
+            return this.hasAttribute(this.getElement(element_selector), attribute_type, attribute).should.eventually.be.true;
   });
 };
 
 const isElementAttributesPresent = function (element_selector, attribute_type, attribute) {
     return waitFor(() => {
-            return this.hasAttributes(general.getElement(element_selector), attribute_type, attribute).should.eventually.be.true;
+            return this.hasAttributes(this.getElement(element_selector), attribute_type, attribute).should.eventually.be.true;
   });
 };
 

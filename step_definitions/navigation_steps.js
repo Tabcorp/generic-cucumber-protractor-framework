@@ -36,4 +36,12 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.When(/^the current url contains "([^"]*)"$/, function (expectedUrl, next) {
+        browsers.myBrowser().getCurrentUrl().then(function (urlString) {
+            urlString.toLowerCase().should.contain(expectedUrl);
+        }).then(function () {
+            next();
+        })
+    });
+
 };

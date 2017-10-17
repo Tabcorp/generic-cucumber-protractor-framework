@@ -454,4 +454,21 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.When(/^a new tab is opened with the url containing "([^"]*)"$/, function (expectedUrl, next) {
+        browsers.myBrowser().sleep(500);
+        var myBrowser = browsers.myBrowser();
+        browsers.myBrowser().getAllWindowHandles()
+            .then(function (windowHandle) {
+                windowHandle.length.should.equal(2);
+                myBrowser.switchTo().window(windowHandle[1])
+                    .then(function () {
+                        myBrowser.driver.getCurrentUrl().should.eventually.contain(expectedUrl);
+                        myBrowser.driver.close().then(function () {
+                            browser.switchTo().window(windowHandle[0])
+                        })
+                    });
+            }).should.notify(next);
+
+    });
+
 };

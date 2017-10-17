@@ -88,6 +88,7 @@ GENERAL STEPS
     And I refresh the page
     And I click the "([^"]*)"
     And I mouse over "([^"]*)"
+    And a new tab is opened with the url containing "([^"]*)"
     
 #### Element at Index ####
     

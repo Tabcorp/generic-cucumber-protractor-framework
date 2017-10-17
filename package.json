@@ -1,6 +1,6 @@
 {
   "name": "generic-cucumber-protractor-framework",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Generic Cucumber Protractor Automation Framework",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,8 @@
     "JSONPath": "^0.11.2",
     "faker": "^4.1.0",
     "lodash": "^4.17.4",
-    "q": "^1.5.0",
     "protractor-hotkeys": "0.0.5",
+    "q": "^1.5.0",
     "request-promise": "^4.2.1"
   }
 }

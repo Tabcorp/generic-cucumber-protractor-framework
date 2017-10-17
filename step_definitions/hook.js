@@ -1,7 +1,6 @@
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
-const mkdirp = require('mkdirp');
 const stored_data = require('../support/stored_data')
 const json_store = require('../support/json_store')
 var Q = require('q');

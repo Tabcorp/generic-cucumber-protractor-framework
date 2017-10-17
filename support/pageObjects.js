@@ -121,6 +121,15 @@ const waitForElementHover = function (element_name) {
   });
 };
 
+const waitForElementAtIndexHover = function (index, element_name) {
+    return waitFor(() => {
+            const current_element = general.getElementAtIndex(index, element_name);
+    return current_element.isPresent().should.eventually.be.true.then(function () {
+        browser.actions().mouseMove(current_element).perform();
+    });
+});
+};
+
 module.exports.elementFor = elementFor;
 module.exports.waitForElementsToLoad = waitForElementsToLoad;
 module.exports.waitForElementToBeClickable = waitForElementToBeClickable;
@@ -133,3 +142,4 @@ module.exports.waitForElementWithTextToLoad = waitForElementWithTextToLoad;
 module.exports.waitForElementWithTextAtIndexToLoad = waitForElementWithTextAtIndexToLoad;
 module.exports.waitForElementWithinElementAtIndexToLoad = waitForElementWithinElementAtIndexToLoad;
 module.exports.waitForElementHover = waitForElementHover;
+module.exports.waitForElementAtIndexHover = waitForElementAtIndexHover;

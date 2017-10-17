@@ -128,6 +128,11 @@ const getElementsCount = function(element_selector) {
     return element.all(this.css(element_selector)).count();
 };
 
+const isElementWithinElementContainingTextPresent = function(main_element_selector, main_element_text, secondary_element_selector) {
+    const parent = element(by.cssContainingText(main_element_selector, main_element_text));
+    return parent.element(this.css(secondary_element_selector)).isPresent();
+};
+
 const getElementsWithinElementAtIndexCount = function (index, main_element_selector, secondary_element_selector) {
     const parent = element.all(this.css(main_element_selector)).get(index);
     return parent.all(this.css(secondary_element_selector)).count();
@@ -260,6 +265,11 @@ const scrollDown = function(scroll_amount) {
 };
 
 
+const scrollToTheBottom = function() {
+    return browsers.myBrowser().executeScript('window.scroll(0, document.body.offsetHeight)');
+};
+
+
 module.exports.getElement = getElement;
 module.exports.byCss = byCss;
 module.exports.cssByDataId = cssByDataId;
@@ -282,6 +292,7 @@ module.exports.getElementIndexWithElementTypeWithinElementAtIndex = getElementIn
 module.exports.isElementTextAtIndexPresent = isElementTextAtIndexPresent;
 module.exports.getNumberOfElements = getNumberOfElements;
 module.exports.getElementsCount = getElementsCount;
+module.exports.isElementWithinElementContainingTextPresent = isElementWithinElementContainingTextPresent;
 module.exports.getElementsWithinElementAtIndexCount = getElementsWithinElementAtIndexCount;
 module.exports.getElementsCountWithInParentElementAtIndex = getElementsCountWithInParentElementAtIndex;
 module.exports.isElementTextPresent = isElementTextPresent;
@@ -302,3 +313,4 @@ module.exports.isElementAttributePresent = isElementAttributePresent;
 module.exports.isElementAttributesPresent = isElementAttributesPresent;
 module.exports.clickElement = clickElement;
 module.exports.scrollDown = scrollDown;
+module.exports.scrollToTheBottom = scrollToTheBottom;

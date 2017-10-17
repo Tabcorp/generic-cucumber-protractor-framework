@@ -1,6 +1,7 @@
 const pageObjects = require('../support/pageObjects');
 const stored_data = require('../support/stored_data');
 const general = require('../support/general');
+const helpers = require('../support/helpers');
 const waitFor = require('../support/waitFor');
 
 module.exports = function() {
@@ -15,6 +16,19 @@ module.exports = function() {
                         })
                     })
             }).should.notify(next);
+    });
+
+    this.Then(/^I store the "([^"]*)" number as "([^"]*)"$/, function (element_name, name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function () {
+                general.getElement(element_selector).getText()
+                    .then(function (retrieved_text) {
+                        stored_data.setData(name, retrieved_text);
+                        next();
+                    });
+
+            })
     });
 
     this.Given(/^I store the number of "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"$/, function (secondary_element, main_element_index, main_element, number_name, next) {
@@ -249,5 +263,36 @@ module.exports = function() {
             }).should.notify(next);
     });
 
+    this.Then(/^the "([^"]*)" should be "([^"]*)" less than the stored number for "([^"]*)"$/, function (element_name, expected_number_difference, name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function () {
+                general.getElement(element_selector).getText()
+                    .then(function (retrieved_text) {
+                        const retrieved_ui_number = helpers.retrieveAsNumber(retrieved_text);
+                        const retrieved_stored_number = helpers.retrieveAsNumber(stored_data.getData(name))
+                        const stored_number_with_difference = retrieved_stored_number - retrieved_ui_number;
+                        expected_number_difference.toString().should.include(stored_number_with_difference.toString());
+                        next();
+                    });
+
+            })
+    });
+
+    this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" number should be "([^"]*)" less than the stored number for "([^"]*)"$/, function (indexText, element_name, number_difference, stored_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        const index = parseInt(indexText) - 1;
+        const expected_number = helpers.retrieveAsNumber(stored_data.getData(stored_name));
+        actual_number = expected_number - number_difference;
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function () {
+                general.checkTextAtIndexIsPresent(element_selector, index).getText()
+                    .then(function(ui_text) {
+                        current_text = helpers.replaceLineBreaks(ui_text);
+                        current_text.toString().should.contain(helpers.dollarFormatter.format(actual_number));
+                    })
+            }).should.notify(next);
+
+    })
 
 }

@@ -1,3 +1,4 @@
+const Q = require('q');
 const general = require('../support/general');
 const pageObjects = require('../support/pageObjects');
 const page = require('../support/page');
@@ -10,11 +11,18 @@ module.exports = function () {
     this.When(/^I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (element_name, page_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const current_url = page.getPageURL(page_name);
-        pageObjects.waitForElementToBeClickable(element_selector)
+        pageObjects.waitForElementToLoad(element_selector)
             .then(function (current_element) {
-                return waitFor(() => {
-                        return current_element.click();
-            })
+                const df = Q.defer();
+                setTimeout(() => {
+                    current_element.click().then(function () {
+                    df.resolve();
+                }, function (err) {
+                    console.log("element present but not visible on the screen - click using javascript");
+                    df.resolve(browser.executeScript('arguments[0].click()', current_element));
+                });
+            }, 5000);
+                return df.promise;
             })
             .then(function () {
                 page.setPage(page_name);
@@ -25,6 +33,7 @@ module.exports = function () {
                     });
             }).should.notify(next);
     });
+
 
     this.When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (indexText, element_name, page_name, next) {
         const index = parseInt(indexText) - 1;
@@ -46,15 +55,30 @@ module.exports = function () {
             }).should.notify(next);
     });
 
-
-    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element)$/, function (element_name, next) {
+    this.Then(/^I click the "([^"]*)" with the text "([^"]*)"$/, function (element_name, current_text, next) {
         const element_selector = pageObjects.elementFor(element_name);
-        console.log(element_selector)
-        pageObjects.waitForElementToBeClickable(element_selector)
+        pageObjects.waitForElementWithTextToLoad(element_selector, current_text)
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.click();
-                })
+            })
+            })
+    });
+
+    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element|radio button)$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function (current_element) {
+                const df = Q.defer();
+                setTimeout(() => {
+                    current_element.click().then(function () {
+                    df.resolve();
+                }, function (err) {
+                    console.log("element present but not visible on the screen - click using javascript");
+                    df.resolve(browser.executeScript('arguments[0].click()', current_element));
+                });
+            }, 5000);
+                return df.promise;
             }).should.notify(next);
     });
 
@@ -143,6 +167,7 @@ module.exports = function () {
 
     this.When(/^I refresh the page$/, function (next) {
         browser.driver.navigate().refresh().then(browser.sleep(4000)).then(function () {
+            //console.log("refreshing page")
             next();
         })
     });
@@ -167,7 +192,7 @@ module.exports = function () {
     this.Then(/^I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, function (indexText, element_name, next) {
         const element_selector = pageObjects.elementFor(element_name);
         const index = parseInt(indexText) - 1;
-        pageObjects.waitForElementHover(element_selector)
+        pageObjects.waitForElementAtIndexHover(index ,element_selector)
             .then(function () {
                 browser.actions().mouseMove(general.getElementAtIndex(index, element_selector));
                 next();
@@ -217,14 +242,23 @@ module.exports = function () {
         }
     });
 
+    this.Then(/^the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element$/, function (main_element, main_element_text, second_element, next) {
+        const main_element_selector = pageObjects.elementFor(main_element);
+        const second_element_selector = pageObjects.elementFor(second_element);
+        general.isElementWithinElementContainingTextPresent(main_element_selector, main_element_text, second_element_selector).should.eventually.be.true.and.notify(next);
+    });
+
 
     this.Then(/^the "([^"]*)" contains the text "([^"]*)"$/, function (element_name, text, next) {
         const element_selector = pageObjects.elementFor(element_name);
+        //console.log(element_selector)
         pageObjects.waitForElementToLoad(element_selector)
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.getText().then(function (ui_text) {
-                            const current_text = ui_text;
+                            //console.log("ui text ", ui_text);
+                            current_text = helpers.replaceLineBreaks(ui_text);
+                            //console.log("ui current text ", current_text);
                             return current_text.should.contain(text);
                         });
             });
@@ -251,7 +285,7 @@ module.exports = function () {
             .then(function () {
                 return waitFor(() => {
                         return general.checkTextAtIndexIsPresent(element_selector, index).getText().then(function (ui_text) {
-                            const current_text = ui_text;
+                            current_text = helpers.replaceLineBreaks(ui_text);
                             return current_text.should.contain(text);
                         })
                     })
@@ -419,13 +453,5 @@ module.exports = function () {
                 })
             }).should.notify(next);
     });
-
-    this.Then(/^I scroll down (\d+)$/, function (scroll_amount, next) {
-        general.scrollDown(scroll_amount)
-            .then(function () {
-                next();
-            });
-    });
-
 
 };

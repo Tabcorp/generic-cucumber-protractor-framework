@@ -1,4 +1,5 @@
 const pageObjects = require('../support/pageObjects');
+const helpers = require('../support/helpers');
 const waitFor = require('../support/waitFor');
 
 module.exports = function() {
@@ -11,7 +12,9 @@ module.exports = function() {
           return current_element.getText().then(function (text) {
             dataTable.hashes().forEach(function (row) {
               for (const key in row){
-                text.should.deep.include(row[key]);
+                current_text = helpers.replaceLineBreaks(row[key]);
+                ui_text = helpers.replaceLineBreaks(text);
+                ui_text.should.deep.include(current_text);
               }
             });
           });

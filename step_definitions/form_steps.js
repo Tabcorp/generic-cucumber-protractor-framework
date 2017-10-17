@@ -19,6 +19,7 @@ module.exports = function () {
         var element_selector = pageObjects.elementFor(element_name);
         pageObjects.waitForElementToLoad(element_selector)
             .then(function (current_element) {
+                current_element.clear();
                 current_element.sendKeys(value).then(() => {
                     next();
             }, (err) => {

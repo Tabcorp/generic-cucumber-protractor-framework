@@ -81,6 +81,7 @@ GENERAL STEPS
 #### Single element ####
 
     When I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page
+    When I click the "([^"]*)" with the text "([^"]*)"
     When I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
     When I click the "([^"]*)" (?:button|link|icon|element)
     And I hover over the "([^"]*)"
@@ -112,6 +113,7 @@ GENERAL STEPS
     Then the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"
     Then the "([^"]*)" does not contain the "([^"]*)" attributes "([^"]*)"
     Then the "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"
+    Then the "([^"]*)" containing the text "([^"]*)" has a "([^"]*)" element
     Then the "([^"]*)" contains the text "([^"]*)"
     Then the "([^"]*)" does not contain the text "([^"]*)"
     Then the "([^"]*)" contains the value "([^"]*)"
@@ -161,8 +163,10 @@ STORED STEPS
 #### Single element ####
 
     When I store the number of "([^"]*)" as "([^"]*)"
+    When I store the "([^"]*)" number as "([^"]*)"
     When I store the "([^"]*)" input value as "([^"]*)"
     When I store each "([^"]*)" "([^"]*)" element attribute as "([^"]*)" for the "([^"]*)"
+    Then the "([^"]*)" should be "([^"]*)" less than the stored number for "([^"]*)"
     Then the "([^"]*)" contains the stored "([^"]*)"
         
 #### Element at Index ####
@@ -180,6 +184,7 @@ STORED STEPS
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the stored text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the stored text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the stored "([^"]*)"
+    Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" number should be "([^"]*)" less than the stored number for "([^"]*)"
     
 TABLE STEPS
 -----------

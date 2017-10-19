@@ -1,6 +1,6 @@
 {
   "name": "generic-cucumber-protractor-framework",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Generic Cucumber Protractor Automation Framework",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/Tabcorp/generic-cucumber-protractor-framework.git"
   },
+  "dependencies": {
+    "JSONPath": "^0.11.2",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
+    "protractor-hotkeys": "0.0.5",
+    "q": "^1.5.0",
+    "request-promise": "^4.2.1"
+  },
   "keywords": [
     "Automation"
   ],
@@ -18,13 +26,5 @@
   "bugs": {
     "url": "https://github.com/Tabcorp/generic-cucumber-protractor-framework/issues"
   },
-  "homepage": "https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme",
-  "devDependencies": {
-    "JSONPath": "^0.11.2",
-    "faker": "^4.1.0",
-    "lodash": "^4.17.4",
-    "protractor-hotkeys": "0.0.5",
-    "q": "^1.5.0",
-    "request-promise": "^4.2.1"
-  }
+  "homepage": "https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme"
 }

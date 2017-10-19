@@ -1,6 +1,7 @@
-var pageObjects = require('../support/pageObjects');
-var fake_data = require('../support/fake_data');
-var helpers = require('../support/helpers')
+const pageObjects = require('../support/pageObjects');
+const fake_data = require('../support/fake_data');
+const helpers = require('../support/helpers');
+const faker = require('faker');
 
 module.exports = function() {
 

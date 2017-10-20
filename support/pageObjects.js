@@ -26,7 +26,10 @@ const waitForElementToLoad = function (element_selector) {
     return current_element.isPresent().should.eventually.be.true;
   }).then(function () {
     return current_element;
-  });
+  }, function (err) {
+    console.log("element not loaded");
+    return current_element;
+  })
 };
 
 const waitForElementToBeClickable = function (element_selector) {
@@ -35,9 +38,12 @@ const waitForElementToBeClickable = function (element_selector) {
     return waitFor(() => {
             current_element = general.getElement(element_selector);
     return browser.wait(EC.elementToBeClickable(current_element), 5000);
-}).then(function () {
+    }).then(function () {
         return current_element;
-    });
+    }, function (err) {
+        console.log("element not clickable");
+        return current_element;
+    })
 };
 
 const waitForElementAtIndexToBeClickable = function (index, element_selector) {
@@ -46,9 +52,12 @@ const waitForElementAtIndexToBeClickable = function (index, element_selector) {
     return waitFor(() => {
             current_element = general.getElementAtIndex(index, element_selector);
     return browser.wait(EC.elementToBeClickable(current_element), 5000);
-}).then(function () {
+    }).then(function () {
         return current_element;
-    });
+    }, function (err) {
+        console.log("element at index not clickable");
+        return current_element;
+    })
 };
 
 
@@ -57,9 +66,12 @@ const waitForElementsToLoad = function (element_selector) {
     return waitFor(() => {
             current_element = general.getElements(element_selector);
     return current_element.isPresent().should.eventually.be.true;
-}).then(function () {
+    }).then(function () {
         return current_element;
-    });
+    }, function (err) {
+        console.log("elements index not clickable");
+        return current_element;
+    })
 }
 
 const waitForElementAtIndexToLoad = function (indexText, element_selector) {
@@ -69,7 +81,10 @@ const waitForElementAtIndexToLoad = function (indexText, element_selector) {
     return current_element.isPresent().should.eventually.be.true;
   }).then(function () {
     return current_element;
-  });
+  }, function (err) {
+        console.log("element at index not loaded");
+        return current_element;
+  })
 };
 
 const waitForElementAtLastIndexToLoad = function (element_selector) {
@@ -77,9 +92,12 @@ const waitForElementAtLastIndexToLoad = function (element_selector) {
     return waitFor(() => {
             current_element = general.getElementAtLastIndex(element_selector);
     return current_element.isPresent().should.eventually.be.true;
-}).then(function () {
+    }).then(function () {
+            return current_element;
+    }, function (err) {
+        console.log("elements at index not loaded");
         return current_element;
-    });
+    })
 };
 
 const waitForElementWithTextToLoad = function (element_type, text) {
@@ -89,7 +107,10 @@ const waitForElementWithTextToLoad = function (element_type, text) {
     return current_element.isPresent().should.eventually.be.true;
     }).then(function () {
         return current_element;
-    });
+    }, function (err) {
+        console.log("element with text not loaded");
+        return current_element;
+    })
 }
 
 const waitForElementWithTextAtIndexToLoad = function (element_type, index, text) {
@@ -99,7 +120,10 @@ const waitForElementWithTextAtIndexToLoad = function (element_type, index, text)
     return current_element.isPresent().should.eventually.be.true;
     }).then(function () {
         return current_element;
-    });
+    }, function (err) {
+        console.log("element with text at index not loaded");
+        return current_element;
+    })
 };
 
 const waitForElementWithinElementAtIndexToLoad = function (indexText, main_element_selector, secondary_element_selector) {
@@ -109,7 +133,10 @@ const waitForElementWithinElementAtIndexToLoad = function (indexText, main_eleme
     return current_element.isPresent().should.eventually.be.true;
     }).then(function () {
           return current_element;
-    });
+    }, function (err) {
+        console.log("element within element at index not loaded");
+        return current_element;
+    })
 };
 
 const waitForElementHover = function (element_name) {

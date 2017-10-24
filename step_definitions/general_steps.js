@@ -8,52 +8,6 @@ const waitFor = require('../support/waitFor');
 
 module.exports = function () {
 
-    this.When(/^I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (element_name, page_name, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        const current_url = page.getPageURL(page_name);
-        pageObjects.waitForElementToLoad(element_selector)
-            .then(function (current_element) {
-                const df = Q.defer();
-                setTimeout(() => {
-                    current_element.click().then(function () {
-                    df.resolve();
-                }, function (err) {
-                    console.log("element present but not visible on the screen - click using javascript");
-                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
-                    df.resolve(browser.executeScript('arguments[0].click()', current_element));
-                });
-            }, 5000);
-                return df.promise;
-            })
-            .then(function () {
-                page.setPage(page_name);
-                return waitFor(() => {
-                        return browsers.myBrowser().getCurrentUrl().then(function(url){
-                            url.toLowerCase().should.contain(current_url);
-                        })
-                    });
-            }).should.notify(next);
-    });
-
-    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element|radio button)$/, function (element_name, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
-            .then(function (current_element) {
-                const df = Q.defer();
-                setTimeout(() => {
-                    current_element.click().then(function () {
-                    df.resolve();
-                }, function (err) {
-                    console.log("element present but not visible on the screen - click using javascript");
-                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
-                    df.resolve(browser.executeScript('arguments[0].click()', current_element));
-                });
-            }, 5000);
-                return df.promise;
-            }).should.notify(next);
-    });
-
-
     this.When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (indexText, element_name, page_name, next) {
         const index = parseInt(indexText) - 1;
         const element_selector = pageObjects.elementFor(element_name);
@@ -83,7 +37,6 @@ module.exports = function () {
             })
             })
     });
-
 
     this.Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (indexText, button, next) {
         const index = parseInt(indexText) - 1;
@@ -200,6 +153,53 @@ module.exports = function () {
                 browser.actions().mouseMove(general.getElementAtIndex(index, element_selector));
                 next();
             });
+    });
+
+    this.When(/^I click the "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (element_name, page_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        const current_url = page.getPageURL(page_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function (current_element) {
+                const df = Q.defer();
+                setTimeout(() => {
+                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
+                current_element.click().then(function () {
+                    df.resolve();
+                }, function (err) {
+                    console.log("element present but not visible on the screen - click using javascript");
+                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
+                    df.resolve(browser.executeScript('arguments[0].click()', current_element));
+                });
+            }, 5000);
+                return df.promise;
+            })
+            .then(function () {
+                page.setPage(page_name);
+                return waitFor(() => {
+                        return browsers.myBrowser().getCurrentUrl().then(function(url){
+                            url.toLowerCase().should.contain(current_url);
+                        })
+                    });
+            }).should.notify(next);
+    });
+
+    this.Then(/^I click the "([^"]*)" (?:button|link|icon|element|radio button)$/, function (element_name, next) {
+        const element_selector = pageObjects.elementFor(element_name);
+        pageObjects.waitForElementToLoad(element_selector)
+            .then(function (current_element) {
+                const df = Q.defer();
+                setTimeout(() => {
+                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
+                current_element.click().then(function () {
+                    df.resolve();
+                }, function (err) {
+                    console.log("element present but not visible on the screen - click using javascript");
+                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
+                    df.resolve(browser.executeScript('arguments[0].click()', current_element));
+                });
+            }, 5000);
+                return df.promise;
+            }).should.notify(next);
     });
 
 

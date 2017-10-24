@@ -267,16 +267,16 @@ module.exports = function() {
         const element_selector = pageObjects.elementFor(element_name);
         pageObjects.waitForElementToLoad(element_selector)
             .then(function () {
-                general.getElement(element_selector).getText()
-                    .then(function (retrieved_text) {
-                        const retrieved_ui_number = helpers.retrieveAsNumber(retrieved_text);
-                        const retrieved_stored_number = helpers.retrieveAsNumber(stored_data.getData(name))
-                        const stored_number_with_difference = retrieved_stored_number - retrieved_ui_number;
-                        expected_number_difference.toString().should.include(stored_number_with_difference.toString());
-                        next();
-                    });
-
-            })
+                return waitFor(() => {
+                        return general.getElement(element_selector).getText()
+                            .then(function (retrieved_text) {
+                                const retrieved_ui_number = helpers.retrieveAsNumber(retrieved_text);
+                                const retrieved_stored_number = helpers.retrieveAsNumber(stored_data.getData(name))
+                                const stored_number_with_difference = retrieved_stored_number - retrieved_ui_number;
+                                return expected_number_difference.toString().should.include(stored_number_with_difference.toString());
+                            })
+                    })
+            }).should.notify(next);
     });
 
     this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" number should be "([^"]*)" less than the stored number for "([^"]*)"$/, function (indexText, element_name, number_difference, stored_name, next) {

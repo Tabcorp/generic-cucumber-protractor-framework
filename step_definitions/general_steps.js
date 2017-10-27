@@ -170,7 +170,7 @@ module.exports = function () {
                     browser.executeScript("arguments[0].scrollIntoView();",current_element);
                     df.resolve(browser.executeScript('arguments[0].click()', current_element));
                 });
-            }, 5000);
+            }, 100);
                 return df.promise;
             })
             .then(function () {
@@ -197,7 +197,7 @@ module.exports = function () {
                     browser.executeScript("arguments[0].scrollIntoView();",current_element);
                     df.resolve(browser.executeScript('arguments[0].click()', current_element));
                 });
-            }, 5000);
+            }, 100);
                 return df.promise;
             }).should.notify(next);
     });

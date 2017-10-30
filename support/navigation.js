@@ -6,6 +6,12 @@ const getBaseUrl = function (route) {
         case 'localhost':
             var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
             break;
+        case 'uat':
+            var baseUrl = process.env.UAT_UI_ROUTE;
+            break;
+        case 'preprod':
+            var baseUrl = process.env.PREPROD_UI_ROUTE;
+            break;
         case 'production':
             var baseUrl = process.env.PRODUCTION_UI_ROUTE;
             break;

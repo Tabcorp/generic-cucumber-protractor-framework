@@ -61,10 +61,10 @@
 
 WEB_SERVER - default = localhost <br />
 WEB_SERVER_PORT - default = 9000 <br />
-LOCAL_API_ROUTE - default = blank
-UAT_UI_ROUTE - default = blank
-PREPROD_UI_ROUTE - default = blank
-PRODUCTION_UI_ROUTE - default = blank
+LOCAL_API_ROUTE - default = blank <br />
+UAT_UI_ROUTE - default = blank <br />
+PREPROD_UI_ROUTE - default = blank <br />
+PRODUCTION_UI_ROUTE - default = blank <br />
 
 # Cucumber steps available
 

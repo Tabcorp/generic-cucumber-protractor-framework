@@ -65,6 +65,7 @@ LOCAL_API_ROUTE - default = blank <br />
 UAT_UI_ROUTE - default = blank <br />
 PREPROD_UI_ROUTE - default = blank <br />
 PRODUCTION_UI_ROUTE - default = blank <br />
+SPECIAL_EXCLUDED_TAGS - default = blank <br />
 
 # Cucumber steps available
 

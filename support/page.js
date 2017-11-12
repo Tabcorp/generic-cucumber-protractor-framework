@@ -10,6 +10,7 @@ let current_page;
 const pageTitle = function (page = current_page) {
   const deferred = Q.defer();
   const {title} = pageObjects.elementFor('_at');
+  console.log(title)
   if (title) {
     const titleElementName = pageObjects.elementFor('title');
     const titleElement = general.getElement(titleElementName);

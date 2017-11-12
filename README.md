@@ -52,7 +52,7 @@
      * stored_data.js
      * tag_manager.js
      * waitFor.js
-   
+
 
 
 #### Environment Variables ####
@@ -75,8 +75,8 @@ FORM STEPS
     Then I fill in the "([^"]*)" input with "([^"]*)"
     Then I select the "([^"]*)" as "([^"]*)"
     Then the "([^"]*)" input should equal the value "([^"]*)"
-   
-    
+    When I clear the field "([^"]*)"
+
 GENERAL STEPS
 -------------
 
@@ -93,16 +93,16 @@ GENERAL STEPS
     And I click the "([^"]*)"
     And I mouse over "([^"]*)"
     And a new tab is opened with the url containing "([^"]*)"
-    
+
 #### Element at Index ####
-    
+
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
     When I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
     When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
-    
+
 ### Assertions ###
 
 
@@ -124,9 +124,9 @@ GENERAL STEPS
     Then the "([^"]*)" contains the value "([^"]*)"
     Then the "([^"]*)" contains no text
     Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)
-    
+
 #### Element at Index ####
-    
+
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"
@@ -140,28 +140,32 @@ GENERAL STEPS
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the text for "([^"]*)"
     Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
-    
-### Wait and Scroll ###
-    
+
+### Wait ###
+
     And I wait "([^"]*)" seconds
+
+SCROLL STEPS
+-------------
     When I scroll down (\d+)$
-    
-    
+    When I scroll to the bottom of the page
+    When I scroll down (\d+) within the "([^"]*)"
+
 NAVIGATION STEPS
 ----------------
- 
+
     Given I am on the "([^"]*)" page
     Given I am directed to the "([^"]*)" page
     Given I set the page to "([^"]*)"
     Then I see the "([^"]*)" page title
     When I navigate to the "([^"]*)" page
     When I navigate directly to the "([^"]*)" page with the stored "([^"]*)"
- 
+
 REST STEPS
 ----------
 
     When I retrieve and store the "(.*)" from "([^"]*)" as "([^"]*)"
-    
+
 STORED STEPS
 ------------
 
@@ -173,16 +177,16 @@ STORED STEPS
     When I store each "([^"]*)" "([^"]*)" element attribute as "([^"]*)" for the "([^"]*)"
     Then the "([^"]*)" should be "([^"]*)" less than the stored number for "([^"]*)"
     Then the "([^"]*)" contains the stored "([^"]*)"
-        
+
 #### Element at Index ####
-        
+
     When I store the number of "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"     
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)"
     When I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"
     When I store the last "([^"]*)" as "([^"]*)"
-    When I store the "([^"]*)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)" within the "([^"]*)" "([^"]*)" 
+    When I store the "([^"]*)" "([^"]*)" "([^"]*)" element attribute text as "([^"]*)" within the "([^"]*)" "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute contains the stored text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute does not contain the stored text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the stored text for "([^"]*)"
@@ -190,13 +194,13 @@ STORED STEPS
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the stored text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the stored "([^"]*)"
     Then the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" number should be "([^"]*)" less than the stored number for "([^"]*)"
-    
+
 TABLE STEPS
 -----------
 
     Then the "([^"]*)" table contains the following
     Then the "([^"]*)" table does not contain the following
-    
+
 FAKE DATA STEPS
 ---------------
 

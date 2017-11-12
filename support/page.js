@@ -10,6 +10,7 @@ let current_page;
 const pageTitle = function (page = current_page) {
   const deferred = Q.defer();
   const {title} = pageObjects.elementFor('_at');
+  console.log(title)
   if (title) {
     const titleElementName = pageObjects.elementFor('title');
     const titleElement = general.getElement(titleElementName);
@@ -22,6 +23,7 @@ const pageTitle = function (page = current_page) {
         deferred.reject(`Page does not contain title "${title}"!`);
       });
   } else {
+    console.log("else")
     deferred.resolve();
   }
   return deferred.promise;
@@ -42,8 +44,10 @@ const goto = function (page, callback) {
 const redirect = function (page_name, callback) {
   setCurrentPage(page_name);
   const current_url = getPageURL();
+  console.log(current_url)
   pageTitle(page_name).then(function () {
     waitFor(() => {
+      console.log("hello cam")
       return browser.getCurrentUrl().should.eventually.contain(current_url);
     }).should.notify(callback);
   }, function (err) {

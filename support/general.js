@@ -264,6 +264,14 @@ const scrollDown = function(scroll_amount) {
     return browsers.myBrowser().executeScript('window.scrollTo(0,'+scroll_amount+');');
 };
 
+const scrollDownWithinElement = function(scroll_amount, element_selector) {
+  console.log(scroll_amount)
+  console.log(element_selector)
+    return waitFor(() => {
+      return browsers.myBrowser()
+        .executeScript('document.querySelector("' + element_selector + '").scrollTop=' + scroll_amount);
+    });
+}
 
 const scrollToTheBottom = function() {
     return browsers.myBrowser().executeScript('window.scroll(0, document.body.offsetHeight)');
@@ -313,4 +321,5 @@ module.exports.isElementAttributePresent = isElementAttributePresent;
 module.exports.isElementAttributesPresent = isElementAttributesPresent;
 module.exports.clickElement = clickElement;
 module.exports.scrollDown = scrollDown;
+module.exports.scrollDownWithinElement = scrollDownWithinElement;
 module.exports.scrollToTheBottom = scrollToTheBottom;

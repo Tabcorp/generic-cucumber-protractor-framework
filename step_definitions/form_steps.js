@@ -48,4 +48,16 @@ module.exports = function () {
             });
     });
 
+    this.Then(/I clear the field "([^"]*)"$/, function (element_name, next) {
+      const element_selector = pageObjects.elementFor(element_name);
+      pageObjects.waitForElementToLoad(element_selector)
+        .then(function (current_element) {
+          current_element.clear().then(() => {
+            next();
+          }, (err) => {
+            next(err);
+          });
+        });
+    });
+
 }

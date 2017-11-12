@@ -75,7 +75,7 @@ FORM STEPS
     Then I fill in the "([^"]*)" input with "([^"]*)"
     Then I select the "([^"]*)" as "([^"]*)"
     Then the "([^"]*)" input should equal the value "([^"]*)"
-
+    When I clear the field "([^"]*)"
 
 GENERAL STEPS
 -------------
@@ -141,11 +141,15 @@ GENERAL STEPS
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the text for "([^"]*)"
     Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
 
-### Wait and Scroll ###
+### Wait ###
 
     And I wait "([^"]*)" seconds
-    When I scroll down (\d+)$
 
+SCROLL STEPS
+-------------
+    When I scroll down (\d+)$
+    When I scroll to the bottom of the page
+    When I scroll down (\d+) within the "([^"]*)"
 
 NAVIGATION STEPS
 ----------------

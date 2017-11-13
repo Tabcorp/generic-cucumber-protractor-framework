@@ -30,9 +30,18 @@ const hasAttribute = function (element, attribute_type, attribute) {
 };
 
 const hasAttributes = function (element, attribute_type, attribute) {
-    return element.getAttribute(attribute_type).then(function (attributes) {
-        return attributes.indexOf(attribute) !== -1;
-    });
+//  Updated this function to validate multiple attributes
+  return element.getAttribute(attribute_type).then(function (attributes) {
+    if (attribute.indexOf('|') !== -1) {
+      const expected_attributes = attribute.split(/\|/);
+      const actual_attributes = attributes.split(/\n/);
+      if (expected_attributes.length !== actual_attributes.length) {
+        return false;
+      }
+      return actual_attributes.join(' ').indexOf(expected_attributes.join(' ')) !== -1;
+    }
+    return attributes.indexOf(attribute) !== -1;
+  });
 };
 
 const hasText = function (element, attribute_type, text) {

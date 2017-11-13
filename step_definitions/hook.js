@@ -18,7 +18,7 @@ module.exports = function () {
         } else if (browser_type === "@tablet") {
             browser.driver.manage().window().setSize(768, 1024);
         } else if (browser_type === "@desktop") {
-            browser.driver.manage().window().setSize(1600, 968);
+            browser.driver.manage().window().setSize(1200, 800);
         }
         next();
     });

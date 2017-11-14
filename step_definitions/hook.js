@@ -14,11 +14,11 @@ module.exports = function () {
         //set the browser dimensions for the test
         browser.params.browser_type = browser_type;
         if (browser_type === "@mobile") {
-            browser.driver.manage().window().setSize(375, 667);
+            browser.driver.manage().window().setSize(parseInt(process.env.MOBILE_UI_HEIGHT) || 375, parseInt(process.env.MOBILE_UI_WIDTH) || 667);
         } else if (browser_type === "@tablet") {
-            browser.driver.manage().window().setSize(768, 1024);
+            browser.driver.manage().window().setSize(parseInt(process.env.TABLET_UI_HEIGHT) || 768, parseInt(process.env.TABLET_UI_WIDTH) || 1024);
         } else if (browser_type === "@desktop") {
-            browser.driver.manage().window().setSize(1200, 800);
+            browser.driver.manage().window().setSize(parseInt(process.env.DESKTOP_UI_HEIGHT) || 1200, parseInt(process.env.DESKTOP_UI_WIDTH) || 800);
         }
         next();
     });

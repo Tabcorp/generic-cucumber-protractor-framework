@@ -66,6 +66,12 @@ UAT_UI_ROUTE - default = blank <br />
 PREPROD_UI_ROUTE - default = blank <br />
 PRODUCTION_UI_ROUTE - default = blank <br />
 SPECIAL_EXCLUDED_TAGS - default = blank <br />
+MOBILE_UI_HEIGHT - default = 375
+MOBILE_UI_WIDTH - default = 667
+TABLET_UI_HEIGHT - default = 768
+TABLET_UI_WIDTH - default = 1024
+DESKTOP_UI_HEIGHT - default = 1200
+DESKTOP_UI_WIDTH - default = 800
 
 # Cucumber steps available
 

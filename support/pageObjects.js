@@ -139,6 +139,19 @@ const waitForElementWithinElementAtIndexToLoad = function (indexText, main_eleme
     })
 };
 
+const waitForElementAtIndexWithinElementAtIndexToLoad = function (main_element_index, main_element_selector, secondary_element_index, secondary_element_selector) {
+    let current_element = null;
+    return waitFor(() => {
+        current_element = general.getElementAtIndexWithInElementAtIndex(secondary_element_index, secondary_element_selector, main_element_index, main_element_selector);
+        return current_element.isPresent().should.eventually.be.true;
+    }).then(function () {
+        return current_element;
+    }, function (err) {
+        console.log("element within element at index not loaded");
+        return current_element;
+    })
+};
+
 const waitForElementHover = function (element_name) {
   return waitFor(() => {
     const current_element = general.getElement(element_name);
@@ -168,5 +181,6 @@ module.exports.waitForElementAtLastIndexToLoad = waitForElementAtLastIndexToLoad
 module.exports.waitForElementWithTextToLoad = waitForElementWithTextToLoad;
 module.exports.waitForElementWithTextAtIndexToLoad = waitForElementWithTextAtIndexToLoad;
 module.exports.waitForElementWithinElementAtIndexToLoad = waitForElementWithinElementAtIndexToLoad;
+module.exports.waitForElementAtIndexWithinElementAtIndexToLoad = waitForElementAtIndexWithinElementAtIndexToLoad;
 module.exports.waitForElementHover = waitForElementHover;
 module.exports.waitForElementAtIndexHover = waitForElementAtIndexHover;

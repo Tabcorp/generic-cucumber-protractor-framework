@@ -19,10 +19,41 @@ module.exports = function () {
         var element_selector = pageObjects.elementFor(element_name);
         pageObjects.waitForElementToLoad(element_selector)
             .then(function (current_element) {
-                current_element.clear();
+                //current_element.clear();
                 current_element.sendKeys(value).then(() => {
                     next();
             }, (err) => {
+                    next(err);
+                });
+            });
+    });
+
+    this.Then(/I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (second_element_name, value, main_element_index, main_element_name, next) {
+        const main_index = parseInt(main_element_index) - 1;
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        const secondary_element_selector = pageObjects.elementFor(second_element_name);
+        pageObjects.waitForElementWithinElementAtIndexToLoad(main_index, main_element_selector, secondary_element_selector)
+            .then(function (current_element) {
+                //current_element.clear();
+                current_element.sendKeys(value).then(() => {
+                    next();
+                }, (err) => {
+                    next(err);
+                });
+            });
+    });
+
+    this.Then(/I fill in the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (second_element_index, second_element_name, value, main_element_index, main_element_name, next) {
+        const main_index = parseInt(main_element_index) - 1;
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        const secondary_element_selector = pageObjects.elementFor(second_element_name);
+        const secondary_index = parseInt(second_element_index) - 1;
+        pageObjects.waitForElementAtIndexWithinElementAtIndexToLoad(main_index, main_element_selector, secondary_index, secondary_element_selector)
+            .then(function (current_element) {
+                //current_element.clear();
+                current_element.sendKeys(value).then(() => {
+                    next();
+                }, (err) => {
                     next(err);
                 });
             });

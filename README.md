@@ -78,10 +78,17 @@ DESKTOP_UI_WIDTH - default = 800 <br />
 FORM STEPS
 ----------
 
+#### Single element ####
+
     Then I fill in the "([^"]*)" input with "([^"]*)"
     Then I select the "([^"]*)" as "([^"]*)"
     Then the "([^"]*)" input should equal the value "([^"]*)"
     When I clear the field "([^"]*)"
+    
+#### Element at Index ####
+
+    When I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
+    When I fill in the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
 
 GENERAL STEPS
 -------------
@@ -108,6 +115,7 @@ GENERAL STEPS
     When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)
     When I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
     When I hover over the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"
+    When I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
 
 ### Assertions ###
 
@@ -146,6 +154,7 @@ GENERAL STEPS
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute contains the text for "([^"]*)"
     Then the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" element attribute does not contain the text for "([^"]*)"
     Then I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
+   
 
 ### Wait ###
 

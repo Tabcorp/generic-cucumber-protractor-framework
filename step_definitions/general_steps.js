@@ -100,6 +100,20 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+
+    this.Given(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (second_element_index, second_element, main_element_index, main_element, next) {
+        const main_element_selector = pageObjects.elementFor(main_element);
+        const secondary_element_selector = pageObjects.elementFor(second_element);
+        const main_index = parseInt(main_element_index) - 1;
+        const secondary_index = parseInt(second_element_index) - 1;
+        pageObjects.waitForElementAtIndexWithinElementAtIndexToLoad(main_index, main_element_selector, secondary_index, secondary_element_selector)
+            .then(function (current_element) {
+                return waitFor(() => {
+                    return current_element.click();
+                })
+            }).should.notify(next);
+    });
+
     this.Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element$/, function (indexText, main_element, second_element, next) {
         const index = parseInt(indexText) - 1;
         const main_element_selector = pageObjects.elementFor(main_element);
@@ -459,6 +473,7 @@ module.exports = function () {
                 })
             }).should.notify(next);
     });
+
 
     this.When(/^a new tab is opened with the url containing "([^"]*)"$/, function (expectedUrl, next) {
         browsers.myBrowser().sleep(500);

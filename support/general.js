@@ -89,7 +89,7 @@ const getWithinElementAtIndex = function (index, main_element_selector, secondar
     return parent.element(this.css(secondary_element_selector));
 };
 
-const getElementAtIndexWithInElementAtIndexDisplayed = function(second_element_index, secondary_element_selector, main_element_index, main_element_selector) {
+const getElementAtIndexWithInElementAtIndex = function(second_element_index, secondary_element_selector, main_element_index, main_element_selector) {
     const parent = element.all(this.css(main_element_selector)).get(main_element_index);
     return parent.all(this.css(secondary_element_selector)).get(second_element_index);
 };
@@ -194,7 +194,7 @@ const checkElementWithinElementAtIndexIsNotDisplayed = function (index, secondar
 
 const checkElementAtIndexWithInElementAtIndexDisplayed = function(main_index, current_main_element, second_index, current_second_element) {
     return waitFor(() => {
-            const current_element = this.getElementAtIndexWithInElementAtIndexDisplayed(main_index, current_main_element, second_index, current_second_element);
+            const current_element = this.getElementAtIndexWithInElementAtIndex(main_index, current_main_element, second_index, current_second_element);
     return current_element.isDisplayed().should.eventually.be.true;
 });
 };
@@ -303,7 +303,7 @@ module.exports.getElementWithinElement = getElementWithinElement;
 module.exports.getElementAtIndex = getElementAtIndex;
 module.exports.getElementAtLastIndex = getElementAtLastIndex;
 module.exports.getWithinElementAtIndex = getWithinElementAtIndex;
-module.exports.getElementAtIndexWithInElementAtIndexDisplayed = getElementAtIndexWithInElementAtIndexDisplayed;
+module.exports.getElementAtIndexWithInElementAtIndex = getElementAtIndexWithInElementAtIndex;
 module.exports.getElementAtIndexWithElementType = getElementAtIndexWithElementType;
 module.exports.getElementIndexWithElementTypeWithinElementAtIndex = getElementIndexWithElementTypeWithinElementAtIndex;
 module.exports.isElementTextAtIndexPresent = isElementTextAtIndexPresent;

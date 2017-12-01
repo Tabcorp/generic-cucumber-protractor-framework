@@ -187,11 +187,13 @@ STORED STEPS
 #### Single element ####
 
     When I store the number of "([^"]*)" as "([^"]*)"
+    When I store the "([^"]*)" as "([^"]*)"
     When I store the "([^"]*)" number as "([^"]*)"
     When I store the "([^"]*)" input value as "([^"]*)"
     When I store each "([^"]*)" "([^"]*)" element attribute as "([^"]*)" for the "([^"]*)"
     Then the "([^"]*)" should be "([^"]*)" less than the stored number for "([^"]*)"
     Then the "([^"]*)" contains the stored "([^"]*)"
+    Then I see the "([^"]*)" and stored "([^"]*)" page title
 
 #### Element at Index ####
 

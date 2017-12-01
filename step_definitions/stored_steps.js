@@ -1,5 +1,6 @@
 const pageObjects = require('../support/pageObjects');
 const stored_data = require('../support/stored_data');
+const browsers = require('../support/browsers');
 const general = require('../support/general');
 const helpers = require('../support/helpers');
 const waitFor = require('../support/waitFor');
@@ -17,6 +18,7 @@ module.exports = function() {
                     })
             }).should.notify(next);
     });
+
 
     this.Then(/^I store the "([^"]*)" number as "([^"]*)"$/, function (element_name, name, next) {
         const element_selector = pageObjects.elementFor(element_name);
@@ -232,6 +234,14 @@ module.exports = function() {
                             stored_data.setData(name, retrieved_text);
                         })
                     })
+            }).should.notify(next);
+    });
+
+    this.Then(/^I see the "([^"]*)" and stored "([^"]*)" page title$/, function(expectedTitle, name, next) {
+        const retrieved_stored_value = stored_data.getData(name);
+        return browsers.myBrowser().driver.getTitle()
+            .then(function(title) {
+                return title.toLowerCase().should.contain(expectedTitle.toLowerCase() + retrieved_stored_value.toLowerCase());
             }).should.notify(next);
     });
 

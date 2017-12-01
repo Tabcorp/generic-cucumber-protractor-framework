@@ -410,9 +410,6 @@ module.exports = function () {
 
     this.Then(/^the "([^"]*)" contains the "([^"]*)" attributes "([^"]*)"$/, function (element_name, attribute_type, attribute, next) {
         const element_selector = pageObjects.elementFor(element_name);
-        console.log(element_selector)
-        console.log(attribute_type)
-        console.log(attribute)
         general.isElementAttributesPresent(element_selector, attribute_type, attribute).should.notify(next);
     });
 

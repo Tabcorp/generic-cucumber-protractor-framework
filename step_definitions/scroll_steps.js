@@ -18,9 +18,9 @@ module.exports = function () {
             });
     });
 
-    this.Then(/^I scroll down (\d+) within the "([^"]*)"$/, function (scroll_amount, element_name, next) {
-      const element_selector = pageObjects.elementFor(element_name);
-      general.scrollDownWithinElement(scroll_amount, element_selector)
+    this.Then(/^I scroll down (\d+) within the "([^"]*)"$/, function (scroll_amount, main_element_name, next) {
+      const main_element_selector = pageObjects.elementFor(main_element_name);
+      general.scrollDownWithinElement(scroll_amount, main_element_selector)
       .then(function () {
         next();
       });

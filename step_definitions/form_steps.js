@@ -1,13 +1,13 @@
-var pageObjects = require('../support/pageObjects');
-var general = require('../support/general')
-var form = require('../support/form');
+const pageObjects = require('../support/pageObjects');
+const general = require('../support/general')
+const form = require('../support/form');
 const waitFor = require('../support/waitFor');
 
 module.exports = function () {
 
-    this.Then(/^I click the "([^"]*)" (?:input|select|textarea|checkbox)$/, function (element_name, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
+    this.Then(/^I click the "([^"]*)" (?:input|select|textarea|checkbox)$/, function (main_element_name, next) {
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        pageObjects.waitForElementToLoad(main_element_selector)
             .then(function (current_element) {
                 return waitFor(() => {
                         return current_element.click();
@@ -15,11 +15,10 @@ module.exports = function () {
             }).should.notify(next);
     });
 
-    this.Then(/I fill in the "([^"]*)" input with "([^"]*)"$/, function (element_name, value, next) {
-        var element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
+    this.Then(/I fill in the "([^"]*)" input with "([^"]*)"$/, function (main_element_name, value, next) {
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        pageObjects.waitForElementToLoad(main_element_selector)
             .then(function (current_element) {
-                //current_element.clear();
                 current_element.sendKeys(value).then(() => {
                     next();
             }, (err) => {
@@ -34,7 +33,6 @@ module.exports = function () {
         const secondary_element_selector = pageObjects.elementFor(second_element_name);
         pageObjects.waitForElementWithinElementAtIndexToLoad(main_index, main_element_selector, secondary_element_selector)
             .then(function (current_element) {
-                //current_element.clear();
                 current_element.sendKeys(value).then(() => {
                     next();
                 }, (err) => {
@@ -59,9 +57,9 @@ module.exports = function () {
             });
     });
 
-    this.Then(/I select the "([^"]*)" as "([^"]*)"$/, function (element_name, value, next)  {
-        var element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
+    this.Then(/I select the "([^"]*)" as "([^"]*)"$/, function (main_element_name, value, next)  {
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        pageObjects.waitForElementToLoad(main_element_selector)
             .then(function(current_element) {
                 current_element.all(by.cssContainingText('option', value)).click().then(() => {
                     next();
@@ -71,17 +69,17 @@ module.exports = function () {
             });
     });
 
-    this.Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, function (element_name, value, next) {
-        const element_selector = pageObjects.elementFor(element_name);
-        pageObjects.waitForElementToLoad(element_selector)
+    this.Then(/^the "([^"]*)" input should equal the value "([^"]*)"$/, function (main_element_name, value, next) {
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        pageObjects.waitForElementToLoad(main_element_selector)
             .then(function(current_element) {
                 current_element.getAttribute('value').should.eventually.equal(value).and.notify(next);
             });
     });
 
-    this.Then(/I clear the field "([^"]*)"$/, function (element_name, next) {
-      const element_selector = pageObjects.elementFor(element_name);
-      pageObjects.waitForElementToLoad(element_selector)
+    this.Then(/I clear the field "([^"]*)"$/, function (main_element_name, next) {
+      const main_element_selector = pageObjects.elementFor(main_element_name);
+      pageObjects.waitForElementToLoad(main_element_selector)
         .then(function (current_element) {
           current_element.clear().then(() => {
             next();

@@ -19,10 +19,10 @@ const elementTypeFor = function (element_type) {
     return elementPageFor()[element_type];
 };
 
-const waitForElementToLoad = function (element_selector) {
+const waitForElementToLoad = function (main_element_selector) {
   let current_element = null;
   return waitFor(() => {
-    current_element = general.getElement(element_selector);
+    current_element = general.getElement(main_element_selector);
     return current_element.isPresent().should.eventually.be.true;
   }).then(function () {
     return current_element;
@@ -32,11 +32,11 @@ const waitForElementToLoad = function (element_selector) {
   })
 };
 
-const waitForElementToBeClickable = function (element_selector) {
+const waitForElementToBeClickable = function (main_element_selector) {
     var EC = protractor.ExpectedConditions;
     let current_element = null;
     return waitFor(() => {
-            current_element = general.getElement(element_selector);
+            current_element = general.getElement(main_element_selector);
     return browser.wait(EC.elementToBeClickable(current_element), 5000);
     }).then(function () {
         return current_element;
@@ -46,11 +46,11 @@ const waitForElementToBeClickable = function (element_selector) {
     })
 };
 
-const waitForElementAtIndexToBeClickable = function (index, element_selector) {
+const waitForElementAtIndexToBeClickable = function (index, main_element_selector) {
     var EC = protractor.ExpectedConditions;
     let current_element = null;
     return waitFor(() => {
-            current_element = general.getElementAtIndex(index, element_selector);
+            current_element = general.getElementAtIndex(index, main_element_selector);
     return browser.wait(EC.elementToBeClickable(current_element), 5000);
     }).then(function () {
         return current_element;
@@ -61,10 +61,10 @@ const waitForElementAtIndexToBeClickable = function (index, element_selector) {
 };
 
 
-const waitForElementsToLoad = function (element_selector) {
+const waitForElementsToLoad = function (main_element_selector) {
     let current_element = null;
     return waitFor(() => {
-            current_element = general.getElements(element_selector);
+            current_element = general.getElements(main_element_selector);
     return current_element.isPresent().should.eventually.be.true;
     }).then(function () {
         return current_element;
@@ -74,10 +74,10 @@ const waitForElementsToLoad = function (element_selector) {
     })
 }
 
-const waitForElementAtIndexToLoad = function (indexText, element_selector) {
+const waitForElementAtIndexToLoad = function (indexText, main_element_selector) {
   let current_element = null;
   return waitFor(() => {
-    current_element = general.getElementAtIndex(indexText, element_selector);
+    current_element = general.getElementAtIndex(indexText, main_element_selector);
     return current_element.isPresent().should.eventually.be.true;
   }).then(function () {
     return current_element;
@@ -87,10 +87,10 @@ const waitForElementAtIndexToLoad = function (indexText, element_selector) {
   })
 };
 
-const waitForElementAtLastIndexToLoad = function (element_selector) {
+const waitForElementAtLastIndexToLoad = function (main_element_selector) {
     let current_element = null;
     return waitFor(() => {
-            current_element = general.getElementAtLastIndex(element_selector);
+            current_element = general.getElementAtLastIndex(main_element_selector);
     return current_element.isPresent().should.eventually.be.true;
     }).then(function () {
             return current_element;

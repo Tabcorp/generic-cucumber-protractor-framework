@@ -4,8 +4,8 @@ const _ = require('lodash');
 const pageObjects = require('./pageObjects');
 const browsers = require('./browsers');
 
-const getElement = function(element_selector) {
-    return _.isString(element_selector) ? element(this.css(element_selector)) : element_selector;
+const getElement = function(main_element_selector) {
+    return _.isString(main_element_selector) ? element(this.css(main_element_selector)) : main_element_selector;
 };
 
 const byCss = function (selector) {
@@ -16,11 +16,11 @@ const cssByDataId = function (data_id) {
     return this.byCss('[data-id="' + data_id + '"]');
 };
 
-const css = function (element_selector) {
-    if (element_selector.search(/^(?:[.#])/) >= 0) {
-        return this.byCss(element_selector);
+const css = function (main_element_selector) {
+    if (main_element_selector.search(/^(?:[.#])/) >= 0) {
+        return this.byCss(main_element_selector);
     }
-    return this.cssByDataId(element_selector);
+    return this.cssByDataId(main_element_selector);
 };
 
 const hasAttribute = function (element, attribute_type, attribute) {
@@ -50,8 +50,8 @@ const hasText = function (element, attribute_type, text) {
     });
 };
 
-const getElements = function (element_selector) {
-    return element.all(this.css(element_selector));
+const getElements = function (main_element_selector) {
+    return element.all(this.css(main_element_selector));
 };
 
 const getElementsWithInElementAtIndex = function (secondary_element_selector, main_element_index, main_element_selector) {
@@ -59,24 +59,24 @@ const getElementsWithInElementAtIndex = function (secondary_element_selector, ma
     return parent.all(this.css(secondary_element_selector))
 };
 
-const findElement = function (element_selector) {
-    return browser.driver.findElement(this.css(element_selector));
+const findElement = function (main_element_selector) {
+    return browser.driver.findElement(this.css(main_element_selector));
 };
 
-const getElementByText = function (element_selector, text) {
-    return element(by.cssContainingText(element_selector, text))
+const getElementByText = function (main_element_selector, text) {
+    return element(by.cssContainingText(main_element_selector, text))
 }
 
-const getElementByTextAtIndex = function(element_selector, index, text) {
-    return element.all(by.cssContainingText(element_selector, text)).get(index)
+const getElementByTextAtIndex = function(main_element_selector, index, text) {
+    return element.all(by.cssContainingText(main_element_selector, text)).get(index)
 };
 
-const getElementAtIndex = function (index, element_selector) {
-    return this.getElements(element_selector).get(index);
+const getElementAtIndex = function (index, main_element_selector) {
+    return this.getElements(main_element_selector).get(index);
 };
 
-const getElementAtLastIndex = function(element_selector) {
-    return this.getElements(element_selector).last();
+const getElementAtLastIndex = function(main_element_selector) {
+    return this.getElements(main_element_selector).last();
 };
 
 const getElementWithinElement = function (main_element_selector, secondary_element_selector) {
@@ -94,8 +94,8 @@ const getElementAtIndexWithInElementAtIndex = function(second_element_index, sec
     return parent.all(this.css(secondary_element_selector)).get(second_element_index);
 };
 
-const getElementAtIndexWithElementType = function(element_selector, index, element_type) {
-    const parent = element.all(this.css(element_selector)).get(index);
+const getElementAtIndexWithElementType = function(main_element_selector, index, element_type) {
+    const parent = element.all(this.css(main_element_selector)).get(index);
     return parent.element(by.css(element_type));
 };
 
@@ -105,8 +105,8 @@ const getElementIndexWithElementTypeWithinElementAtIndex = function(main_element
     return child.element(by.css(element_type));
 };
 
-const isElementTextPresent = function (element_selector, attribute_type, text) {
-    return this.hasText(this.getElement(element_selector), attribute_type, text)
+const isElementTextPresent = function (main_element_selector, attribute_type, text) {
+    return this.hasText(this.getElement(main_element_selector), attribute_type, text)
         .then(function (hasText) {
             if (hasText) {
                 return true
@@ -116,8 +116,8 @@ const isElementTextPresent = function (element_selector, attribute_type, text) {
         });
 };
 
-const isElementTextAtIndexPresent = function (index, element_selector, attribute_type, text) {
-    return this.hasText(this.getElementAtIndex(index, element_selector), attribute_type, text)
+const isElementTextAtIndexPresent = function (index, main_element_selector, attribute_type, text) {
+    return this.hasText(this.getElementAtIndex(index, main_element_selector), attribute_type, text)
         .then(function (hasAttributes) {
             if (hasAttributes) {
                 return true
@@ -127,14 +127,14 @@ const isElementTextAtIndexPresent = function (index, element_selector, attribute
         });
 };
 
-const getNumberOfElements = function(element_selector) {
-    return general.getElements(element_selector).then(function (elementsList) {
+const getNumberOfElements = function(main_element_selector) {
+    return general.getElements(main_element_selector).then(function (elementsList) {
         return elementsList.length;
     });
 };
 
-const getElementsCount = function(element_selector) {
-    return element.all(this.css(element_selector)).count();
+const getElementsCount = function(main_element_selector) {
+    return element.all(this.css(main_element_selector)).count();
 };
 
 const isElementWithinElementContainingTextPresent = function(main_element_selector, main_element_text, secondary_element_selector) {
@@ -152,8 +152,8 @@ const getElementsCountWithInParentElementAtIndex = function (index, main_element
     return parent_element.all(this.css(secondary_element_selector)).count();
 };
 
-const checkElementTextAtIndexIsPresent =  function (index, element_selector, attribute_type, text) {
-    const current_element = element.all(this.css(element_selector)).get(index);
+const checkElementTextAtIndexIsPresent =  function (index, main_element_selector, attribute_type, text) {
+    const current_element = element.all(this.css(main_element_selector)).get(index);
     return this.hasText(current_element, attribute_type, text)
         .then(function (hasAttributes) {
             if (hasAttributes) {
@@ -164,16 +164,16 @@ const checkElementTextAtIndexIsPresent =  function (index, element_selector, att
         });
 };
 
-const checkElementIsDisplayed = function (element_selector) {
+const checkElementIsDisplayed = function (main_element_selector) {
     return waitFor(() => {
-            const current_element = this.getElement(element_selector);
+            const current_element = this.getElement(main_element_selector);
     return current_element.isDisplayed().should.eventually.be.true;
   });
 };
 
-const checkElementIsNotDisplayed = function (element_selector) {
+const checkElementIsNotDisplayed = function (main_element_selector) {
     return waitFor(() => {
-            const current_element = this.getElement(element_selector);
+            const current_element = this.getElement(main_element_selector);
     return current_element.isDisplayed().should.eventually.be.false;
   });
 };
@@ -207,61 +207,61 @@ const checkElementWithinElementIsPresent = function (main_element_selector, seco
 });
 };
 
-const checkElementAtIndexIsDisplayed = function (index, element_selector) {
+const checkElementAtIndexIsDisplayed = function (index, main_element_selector) {
     return waitFor(() => {
-            const current_element = this.getElementAtIndex(index, element_selector);
+            const current_element = this.getElementAtIndex(index, main_element_selector);
     return current_element.isDisplayed().should.eventually.be.true;
 });
 };
 
-const checkElementAtIndexIsNotDisplayed = function (index, element_selector) {
+const checkElementAtIndexIsNotDisplayed = function (index, main_element_selector) {
     return waitFor(() => {
-            const current_element = this.getElementAtIndex(index, element_selector);
+            const current_element = this.getElementAtIndex(index, main_element_selector);
     return current_element.isDisplayed().should.eventually.be.false;
 });
 };
 
-const checkElementIsPresent = function (element_selector) {
+const checkElementIsPresent = function (main_element_selector) {
     return waitFor(() => {
-            const current_element = this.getElement(element_selector);
+            const current_element = this.getElement(main_element_selector);
     return current_element.isPresent().should.eventually.be.true;
   });
 };
 
-const checkElementIsNotPresent = function (element_selector) {
+const checkElementIsNotPresent = function (main_element_selector) {
     return waitFor(() => {
-            const current_element = this.getElement(element_selector);
+            const current_element = this.getElement(main_element_selector);
     return current_element.isPresent().should.eventually.be.false;
   });
 };
 
-const checkTextAtIndexIsPresent = function (element_selector, index) {
-    return element.all(this.css(element_selector)).get(index);
+const checkTextAtIndexIsPresent = function (main_element_selector, index) {
+    return element.all(this.css(main_element_selector)).get(index);
 };
 
-const checkClassAtIndexIsPresent = function (index, element_selector, attribute_type, attribute) {
-    var parent_element = element.all(this.css(element_selector)).get(index);
+const checkClassAtIndexIsPresent = function (index, main_element_selector, attribute_type, attribute) {
+    var parent_element = element.all(this.css(main_element_selector)).get(index);
     return this.hasAttribute(parent_element, attribute_type, attribute)
         .then(function (hasAttributes) {
             return hasAttributes;
         });
 };
 
-const isElementAttributePresent = function (element_selector, attribute_type, attribute) {
+const isElementAttributePresent = function (main_element_selector, attribute_type, attribute) {
     return waitFor(() => {
-            return this.hasAttribute(this.getElement(element_selector), attribute_type, attribute).should.eventually.be.true;
+            return this.hasAttribute(this.getElement(main_element_selector), attribute_type, attribute).should.eventually.be.true;
   });
 };
 
-const isElementAttributesPresent = function (element_selector, attribute_type, attribute) {
+const isElementAttributesPresent = function (main_element_selector, attribute_type, attribute) {
     return waitFor(() => {
-            return this.hasAttributes(this.getElement(element_selector), attribute_type, attribute).should.eventually.be.true;
+            return this.hasAttributes(this.getElement(main_element_selector), attribute_type, attribute).should.eventually.be.true;
   });
 };
 
 
-const clickElement = function (element_selector) {
-    return pageObjects.waitForElementToLoad(element_selector)
+const clickElement = function (main_element_selector) {
+    return pageObjects.waitForElementToLoad(main_element_selector)
         .then(function (current_element) {
             return waitFor(() => {
                     return current_element.click();
@@ -273,12 +273,10 @@ const scrollDown = function(scroll_amount) {
     return browsers.myBrowser().executeScript('window.scrollTo(0,'+scroll_amount+');');
 };
 
-const scrollDownWithinElement = function(scroll_amount, element_selector) {
-  console.log(scroll_amount)
-  console.log(element_selector)
+const scrollDownWithinElement = function(scroll_amount, main_element_selector) {
     return waitFor(() => {
       return browsers.myBrowser()
-        .executeScript('document.querySelector("' + element_selector + '").scrollTop=' + scroll_amount);
+        .executeScript('document.querySelector("' + main_element_selector + '").scrollTop=' + scroll_amount);
     });
 }
 

@@ -45,8 +45,7 @@ module.exports = function () {
             .then(function(current_element) {
                 const df = Q.defer();
                 setTimeout(() => {
-                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
-                    current_element.click().then(function () {
+                        current_element.click().then(function () {
                         df.resolve();
                     }, function (err) {
                         console.log("element present but not visible on the screen - click using javascript");
@@ -185,8 +184,7 @@ module.exports = function () {
             .then(function (current_element) {
                 const df = Q.defer();
                 setTimeout(() => {
-                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
-                current_element.click().then(function () {
+                    current_element.click().then(function () {
                     df.resolve();
                 }, function (err) {
                     console.log("element present but not visible on the screen - click using javascript");
@@ -212,8 +210,7 @@ module.exports = function () {
             .then(function (current_element) {
                 const df = Q.defer();
                 setTimeout(() => {
-                    browser.executeScript("arguments[0].scrollIntoView();",current_element);
-                current_element.click().then(function () {
+                    current_element.click().then(function () {
                     df.resolve();
                 }, function (err) {
                     console.log("element present but not visible on the screen - click using javascript");

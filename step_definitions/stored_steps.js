@@ -35,7 +35,7 @@ module.exports = function() {
 
     this.Given(/^I store the number of "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" as "([^"]*)"$/, function (secondary_element_name, main_element_index, main_element_name, number_name, next) {
         const main_index = parseInt(main_element_index) - 1;
-        const main_element_selector = pageObjects.elementFor(main_element);
+        const main_element_selector = pageObjects.elementFor(main_element_name);
         const secondary_element_selector = pageObjects.elementFor(secondary_element_name);
         pageObjects.waitForElementAtIndexToLoad(main_index, main_element_selector)
             .then(function () {

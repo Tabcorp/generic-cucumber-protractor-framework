@@ -388,7 +388,7 @@ module.exports = function () {
 
     this.Then(/^the "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, function (main_element_name, attribute_type, attribute, next) {
         const main_element_selector = pageObjects.elementFor(main_element_name);
-        pageObjects.waitForElementToLoad(element_selector)
+        pageObjects.waitForElementToLoad(main_element_selector)
             .then(function () {
                 general.isElementTextPresent(main_element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);
             });

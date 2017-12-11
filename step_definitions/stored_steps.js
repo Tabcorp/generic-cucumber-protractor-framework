@@ -253,7 +253,7 @@ module.exports = function() {
                 return waitFor(() => {
                         return current_element.getText().then(function (retrieved_text) {
                             const retrieved_stored_value = stored_data.getData(name);
-                            return retrieved_text.toString().should.include(retrieved_stored_value);
+                            return retrieved_text.toLowerCase().toString().should.include(retrieved_stored_value.toLowerCase());
                         })
                     })
             }).should.notify(next);

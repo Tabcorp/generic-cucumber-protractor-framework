@@ -221,6 +221,20 @@ const checkElementAtIndexIsNotDisplayed = function (index, main_element_selector
 });
 };
 
+const checkElementAtIndexIsNotPresent = function (index, main_element_selector) {
+    return waitFor(() => {
+        const current_element = this.getElementAtIndex(index, main_element_selector);
+        return current_element.isPresent().should.eventually.be.false;
+    });
+};
+
+const checkElementAtIndexIsPresent = function (index, main_element_selector) {
+    return waitFor(() => {
+        const current_element = this.getElementAtIndex(index, main_element_selector);
+        return current_element.isPresent().should.eventually.be.true;
+    });
+};
+
 const checkElementIsPresent = function (main_element_selector) {
     return waitFor(() => {
             const current_element = this.getElement(main_element_selector);
@@ -285,6 +299,10 @@ const scrollToTheBottom = function() {
 };
 
 
+const scrollToTheTop = function() {
+    return browsers.myBrowser().executeScript('window.scroll(document.body.offsetHeight, 0)');
+};
+
 module.exports.getElement = getElement;
 module.exports.byCss = byCss;
 module.exports.cssByDataId = cssByDataId;
@@ -320,6 +338,8 @@ module.exports.checkElementAtIndexWithInElementAtIndexDisplayed = checkElementAt
 module.exports.checkElementWithinElementIsPresent = checkElementWithinElementIsPresent;
 module.exports.checkElementAtIndexIsDisplayed = checkElementAtIndexIsDisplayed;
 module.exports.checkElementAtIndexIsNotDisplayed = checkElementAtIndexIsNotDisplayed;
+module.exports.checkElementAtIndexIsNotPresent = checkElementAtIndexIsNotPresent;
+module.exports.checkElementAtIndexIsPresent = checkElementAtIndexIsPresent;
 module.exports.checkElementIsPresent = checkElementIsPresent;
 module.exports.checkElementIsNotPresent = checkElementIsNotPresent;
 module.exports.checkTextAtIndexIsPresent = checkTextAtIndexIsPresent;
@@ -330,3 +350,4 @@ module.exports.clickElement = clickElement;
 module.exports.scrollDown = scrollDown;
 module.exports.scrollDownWithinElement = scrollDownWithinElement;
 module.exports.scrollToTheBottom = scrollToTheBottom;
+module.exports.scrollToTheTop = scrollToTheTop;

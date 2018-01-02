@@ -123,6 +123,20 @@ module.exports = function() {
             }).should.notify(next);
     });
 
+    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the stored text for "([^"]*)"$/, function (main_element_index, main_element_name, name, next) {
+        const main_index = parseInt(main_element_index) - 1;
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        pageObjects.waitForElementAtIndexToLoad(main_index, main_element_selector)
+            .then(function () {
+                return waitFor(() => {
+                    return general.getElementAtIndex(main_index, main_element_selector).getText().then(function (retrieved_text) {
+                        var retrieved_stored_value = stored_data.getData(name);
+                        retrieved_stored_value.toString().should.not.include(retrieved_text);
+                    })
+                })
+            }).should.notify(next);
+    });
+
 
     this.Then(/^I store the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" "([^"]*)" "([^"]*)" element attribute as "([^"]*)"$/, function (main_element_index, main_element_name, element_type, element_attribute, name, next) {
         const main_index = parseInt(main_element_index) - 1;

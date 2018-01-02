@@ -18,6 +18,13 @@ module.exports = function () {
             });
     });
 
+    this.Then(/^I scroll to the top of the page$/, function (next) {
+        general.scrollToTheTop()
+            .then(function () {
+                next();
+            });
+    });
+
     this.Then(/^I scroll down (\d+) within the "([^"]*)"$/, function (scroll_amount, main_element_name, next) {
       const main_element_selector = pageObjects.elementFor(main_element_name);
       general.scrollDownWithinElement(scroll_amount, main_element_selector)

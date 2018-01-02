@@ -256,6 +256,16 @@ module.exports = function () {
         }
     });
 
+    this.Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" element should( not)? be present$/, function (main_element_index, main_element_name, negate, next) {
+        const main_index = parseInt(main_element_index) - 1;
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        if (negate) {
+            general.checkElementAtIndexIsNotPresent(main_index, main_element_selector).should.notify(next);
+        } else {
+            general.checkElementAtIndexIsPresent(main_index, main_element_selector).should.notify(next);
+        }
+    });
+
     this.Then(/^the "([^"]*)" element should( not)? be enable/, function (main_element_name, negate, next) {
         const main_element_selector = pageObjects.elementFor(main_element_name);
         if (negate) {

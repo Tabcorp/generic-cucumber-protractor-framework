@@ -457,6 +457,16 @@ module.exports = function () {
             }).should.notify(next);
     });
 
+    this.Then(/^I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/, function (count, main_element_name, next) {
+        const main_element_selector = pageObjects.elementFor(main_element_name);
+        pageObjects.waitForElementsToLoad(main_element_selector)
+            .then(function () {
+                return waitFor(() => {
+                    return general.isElementsCountGreaterThanExpected(main_element_selector, count).should.eventually.be.true.and.notify(next);
+                })
+            }).should.notify(next);
+    });
+
     this.Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (count, second_element_name, main_element_index, main_element_name, next) {
         const main_index = parseInt(main_element_index) - 1;
         const main_element_selector = pageObjects.elementFor(main_element_name);

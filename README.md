@@ -138,6 +138,7 @@ GENERAL STEPS
     Then the "([^"]*)" contains the value "([^"]*)"
     Then the "([^"]*)" contains no text
     Then I can see "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)
+    Then I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)
 
 #### Element at Index ####
 
@@ -181,6 +182,7 @@ NAVIGATION STEPS
 REST STEPS
 ----------
 
+    When I have a created a "([^"]*)" for "([^"]*)"
     When I retrieve and store the "(.*)" from "([^"]*)" as "([^"]*)"
 
 STORED STEPS

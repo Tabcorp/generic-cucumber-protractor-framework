@@ -137,6 +137,16 @@ const getElementsCount = function(main_element_selector) {
     return element.all(this.css(main_element_selector)).count();
 };
 
+const isElementsCountGreaterThanExpected = function(main_element_selector, expected_count) {
+    return element.all(this.css(main_element_selector)).count().then(function (element_count) {
+        if (element_count > expected_count) {
+            return true
+        } else {
+            return false
+        }
+    });
+};
+
 const isElementWithinElementContainingTextPresent = function(main_element_selector, main_element_text, secondary_element_selector) {
     const parent = element(by.cssContainingText(main_element_selector, main_element_text));
     return parent.element(this.css(secondary_element_selector)).isPresent();
@@ -325,6 +335,7 @@ module.exports.getElementIndexWithElementTypeWithinElementAtIndex = getElementIn
 module.exports.isElementTextAtIndexPresent = isElementTextAtIndexPresent;
 module.exports.getNumberOfElements = getNumberOfElements;
 module.exports.getElementsCount = getElementsCount;
+module.exports.isElementsCountGreaterThanExpected = isElementsCountGreaterThanExpected;
 module.exports.isElementWithinElementContainingTextPresent = isElementWithinElementContainingTextPresent;
 module.exports.getElementsWithinElementAtIndexCount = getElementsWithinElementAtIndexCount;
 module.exports.getElementsCountWithInParentElementAtIndex = getElementsCountWithInParentElementAtIndex;

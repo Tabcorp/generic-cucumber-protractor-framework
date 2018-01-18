@@ -29,7 +29,7 @@ const pageTitle = function (page = current_page) {
 
 const goto = function (page, callback) {
   setCurrentPage(page);
-  browser.get(navigation.getPage(page)).then(function () {;
+  browser.get(navigation.getPage(page)).then(function () {
     browser.waitForAngular();
     return pageTitle(page).then(function () {
       callback();
@@ -72,5 +72,7 @@ module.exports.pageFor = pageFor;
 module.exports.setPage = setCurrentPage;
 module.exports.getPage = getPage;
 module.exports.getPageURL = getPageURL;
+module.exports.setCurrentPage = setCurrentPage;
+module.exports.pageTitle = pageTitle;
 module.exports.goto = goto;
 module.exports.redirect = redirect;

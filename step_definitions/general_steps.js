@@ -52,7 +52,7 @@ module.exports = function () {
                         browser.executeScript("arguments[0].scrollIntoView();",current_element);
                         df.resolve(browser.executeScript('arguments[0].click()', current_element));
                     });
-                }, 100);
+                }, process.env.EXTENDED_POLL_WAIT_ON_CLICK || 100);
                 return df.promise;
             }).should.notify(next);
     });
@@ -191,7 +191,7 @@ module.exports = function () {
                     browser.executeScript("arguments[0].scrollIntoView();",current_element);
                     df.resolve(browser.executeScript('arguments[0].click()', current_element));
                 });
-            }, 100);
+            }, process.env.EXTENDED_POLL_WAIT_ON_CLICK || 100);
                 return df.promise;
             })
             .then(function () {
@@ -217,7 +217,7 @@ module.exports = function () {
                     browser.executeScript("arguments[0].scrollIntoView();",current_element);
                     df.resolve(browser.executeScript('arguments[0].click()', current_element));
                 });
-            }, 100);
+            }, process.env.EXTENDED_POLL_WAIT_ON_CLICK || 100);
                 return df.promise;
             }).should.notify(next);
     });

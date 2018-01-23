@@ -308,6 +308,13 @@ const scrollToTheBottom = function() {
     return browsers.myBrowser().executeScript('window.scroll(0, document.body.offsetHeight)');
 };
 
+const scrollElementToTheBottom = function(main_element_selector) {
+    console.log("Element2: ", main_element_selector);
+    console.log("Element3: ", "('." + main_element_selector + "')");
+    console.log("Element4: ", "$('." + main_element_selector + "').scrollIntoView(false)");
+    return browsers.myBrowser()
+        .executeScript('document.querySelector("' + main_element_selector + '").scrollIntoView(false)');
+        // .executeScript("$('." + main_element_selector + "').scrollIntoView(false)");
 
 const scrollToTheTop = function() {
     return browsers.myBrowser().executeScript('window.scroll(document.body.offsetHeight, 0)');
@@ -361,4 +368,3 @@ module.exports.clickElement = clickElement;
 module.exports.scrollDown = scrollDown;
 module.exports.scrollDownWithinElement = scrollDownWithinElement;
 module.exports.scrollToTheBottom = scrollToTheBottom;
-module.exports.scrollToTheTop = scrollToTheTop;

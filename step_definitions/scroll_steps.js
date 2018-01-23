@@ -33,5 +33,13 @@ module.exports = function () {
       });
     });
 
+    this.Then(/^I scroll "([^"]*)" element to the bottom of the visible area of the browser window$/, function (main_element_name, next) {
+      const main_element_selector = pageObjects.elementFor(main_element_name);
+      console.log("Element1: ", main_element_selector);
+      general.scrollElementToTheBottom(main_element_selector)
+        .then(function () {
+          next();
+        });
+    });
 
 };

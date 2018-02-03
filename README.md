@@ -1,6 +1,6 @@
 # GENERIC CUCUMBER PROTRACTOR FRAMEWORK #
 
-![alt text](http://i66.tinypic.com/10p0lqu.png)
+![alt text](http://i65.tinypic.com/25zge2g.png)
 
 ###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - <a href="https://au.linkedin.com/in/cambradley">Cameron Bradley</a>
 

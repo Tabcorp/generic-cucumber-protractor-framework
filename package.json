@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Tabcorp/generic-cucumber-protractor-framework.git"
   },
-  "dependencies": {
+  "devDependencies": {
     "JSONPath": "^0.11.2",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
@@ -25,7 +25,25 @@
     "request-promise": "^4.2.2"
   },
   "keywords": [
-    "Automation"
+    "generic cucumber protractor framework",
+    "generic-cucumber-protractor-framework",
+    "cucumber steps",
+    "cucumber step definitions",
+    "protractor plugin",
+    "test",
+    "testing",
+    "automated tests",
+    "e2e tests",
+    "end-to-end tests",
+    "webdriver",
+    "webdriverjs",
+    "selenium",
+    "protractor",
+    "cucumber",
+    "cucumberjs",
+    "cucumber-js",
+    "gherkin",
+    "bdd"
   ],
   "author": "Cameron Bradley <cameron.bradley@tabcorp.com.au> (http://www.tabcorp.com.au)",
   "license": "ISC",

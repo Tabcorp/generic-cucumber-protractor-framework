@@ -1,6 +1,6 @@
 # GENERIC CUCUMBER PROTRACTOR FRAMEWORK #
 
-![alt text](http://i65.tinypic.com/fasv1s.jpg)
+![alt text](http://i66.tinypic.com/10p0lqu.png)
 
 ###### Owner: Lead Automation Engineer for Digital Melbourne (TABCORP) - <a href="https://au.linkedin.com/in/cambradley">Cameron Bradley</a>
 
@@ -18,6 +18,22 @@
         * pages.json
         * page_name.json
    * feature.feature
+   
+### Get up and running:
+
+1.) Install the generic-common-protractor-framework into your project
+
+    npm install generic-cucumber-protractorc-framework@latest --save-dev
+
+2.) Ensure your project has the following (required for the protractor_conf.js)
+
+    npm install cucumber@latest --save-dev
+    npm install protractor@latest --save-dev
+    npm install protractor-cucumber-framework@latest --save-dev
+
+3.) Refer to the protractor_conf_example 
+
+Copy and paste the protractor-conf.js into /e2e/config and update accordingly.
 
 ### The Common Repository:
 
@@ -27,13 +43,17 @@
  * /fake_data
  * /node_modules
  * /step_definitions
+   * alert_steps.js 
    * env.js
    * fake_data_steps.js
    * form_steps.js
    * general_steps.js
    * hooks.js
+   * hotkey_steps.js
+   * json_path_steps.js
    * navigation_steps.js
    * rest_steps.js
+   * scroll_Steps.js
    * stored_steps.js
    * table_steps.js  
  * /support
@@ -47,13 +67,27 @@
      * page.js
      * pageObjects.js
      * request.js
+     * request_payloads.js
      * restConfig.js
      * step_definitions_manager.js
      * stored_data.js
      * tag_manager.js
      * waitFor.js
 
+Packages installed by the common repository
 
+    "JSONPath"
+    "chai"
+    "chai-as-promised"
+    "chai-things"
+    "cucumber-pretty"
+    "faker"
+    "lodash"
+    "protractor-flake"
+    "protractor-hotkeys"
+    "q"
+    "request"
+    "request-promise"
 
 #### Environment Variables ####
 

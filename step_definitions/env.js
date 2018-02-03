@@ -1,4 +1,7 @@
-module.exports = function () {
-  // Set step timeout to be 1 minute
-  this.setDefaultTimeout(100 * 2000);
-};
+const path = require('path');
+const ROOT_PATH = path.resolve('./');
+const {defineSupportCode} = require(ROOT_PATH + '/node_modules/cucumber');
+
+defineSupportCode(({setDefaultTimeout}) => {
+    setDefaultTimeout(60 * 1000);
+});

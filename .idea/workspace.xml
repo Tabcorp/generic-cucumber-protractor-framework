@@ -32,8 +32,18 @@
       <file leaf-file-name="env.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/step_definitions/env.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            <state relative-caret-position="30">
+              <caret line="2" column="74" lean-forward="false" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="general_steps.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/step_definitions/general_steps.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="76" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -53,9 +63,9 @@
         <entry file="file://$PROJECT_DIR$/package-lock.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <caret line="1705" column="1" lean-forward="false" selection-start-line="1705" selection-start-column="1" selection-end-line="1705" selection-end-column="1" />
               <folding>
-                <marker date="1517790495426" expanded="true" signature="0:306" ph="{&quot;name&quot;: &quot;generic-cucumber-protractor-framework&quot;...}" />
+                <marker date="1517791632360" expanded="true" signature="0:57115" ph="{&quot;name&quot;: &quot;generic-cucumber-protractor-framework&quot;...}" />
               </folding>
             </state>
           </provider>
@@ -229,6 +239,11 @@
             <path>
               <item name="generic-cucumber-protractor-framework" type="b2602c69:ProjectViewProjectNode" />
               <item name="generic-cucumber-protractor-framework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="generic-cucumber-protractor-framework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="generic-cucumber-protractor-framework" type="462c0819:PsiDirectoryNode" />
+              <item name="step_definitions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -761,12 +776,12 @@
       <workItem from="1516578760544" duration="164000" />
       <workItem from="1517524580722" duration="17972000" />
       <workItem from="1517550252110" duration="11711000" />
-      <workItem from="1517698180034" duration="8483000" />
+      <workItem from="1517698180034" duration="9190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="573642000" />
+    <option name="totallyTimeSpent" value="574349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="784" extended-state="0" />
@@ -970,13 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/step_definitions/general_steps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4410">
-          <caret line="294" column="24" lean-forward="false" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/support/fake_data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1081,9 +1089,9 @@
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <caret line="1705" column="1" lean-forward="false" selection-start-line="1705" selection-start-column="1" selection-end-line="1705" selection-end-column="1" />
           <folding>
-            <marker date="1517790495426" expanded="true" signature="0:306" ph="{&quot;name&quot;: &quot;generic-cucumber-protractor-framework&quot;...}" />
+            <marker date="1517791632360" expanded="true" signature="0:57115" ph="{&quot;name&quot;: &quot;generic-cucumber-protractor-framework&quot;...}" />
           </folding>
         </state>
       </provider>
@@ -1096,10 +1104,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/step_definitions/general_steps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="76" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/step_definitions/env.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        <state relative-caret-position="30">
+          <caret line="2" column="74" lean-forward="false" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
           <folding />
         </state>
       </provider>

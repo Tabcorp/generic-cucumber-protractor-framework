@@ -1,6 +1,6 @@
 {
   "name": "generic-cucumber-protractor-framework",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Generic Cucumber Protractor Automation Framework",
   "main": "index.js",
   "scripts": {
@@ -39,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/Tabcorp/generic-cucumber-protractor-framework/issues"
   },
-  "homepage": "https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme"
+  "homepage": "https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme",
+  "dependencies": {
+    "q": "^1.5.1"
+  }
 }

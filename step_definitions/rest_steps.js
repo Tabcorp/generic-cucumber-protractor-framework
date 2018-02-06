@@ -11,14 +11,14 @@ const restConfig = require('../support/restConfig');
 const request_path = require('../support/request');
 const request_payload = require('../support/request_payload');
 
-Given(/^I have a created a "([^"]*)" for "([^"]*)"$/, function (request_body, request_url, next) {
+Given(/^I have a created a "([^"]*)" for "([^"]*)" through the "([^"]*)"$/, function (request_body, request_url, server_name, next) {
     const current_request_url = request_path.getRequestURL(request_url);
     const original_json = request_payload.getRequestPayload(request_body);
     const updated_json = request_path.updateRequest(original_json);
     var expectedStatusCode = parseInt(200);
-    requestPromise(restConfig.post(JSON.parse(updated_json), current_request_url))
+    requestPromise(restConfig.post(JSON.parse(updated_json), current_request_url, server_name))
         .then(function (response) {
-            jsonStore.setJson(JSON.parse(response.body));
+            jsonStore.setJson(response.body);
             response.statusCode.should.equal(expectedStatusCode);
             next();
         },function(err){

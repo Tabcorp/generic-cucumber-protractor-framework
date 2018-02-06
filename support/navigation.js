@@ -1,5 +1,6 @@
 const current_page = require("./page");
 const BASE_URL_TEMPLATE = "http://server:port";
+const servers = require("./servers");
 
 const getBaseUrl = function (route) {
     switch(getEnvironment()) {
@@ -19,13 +20,9 @@ const getBaseUrl = function (route) {
     return `${baseUrl}${route}`;
 };
 
-var baseAPIUrl = function (route) {
-    switch(getEnvironment()) {
-        case 'localhost':
-            var baseAPIUrl = process.env.LOCAL_API_ROUTE;
-            break;
-    }
-    return `${baseAPIUrl}${route}`;
+var baseAPIUrl = function (route, server_name) {
+    const server = servers.getAPIServerURL(server_name)
+    return "http://"+server+route
 }
 
 var webServer = function () {
@@ -52,8 +49,8 @@ const getPageByURL = function(page, stored_value) {
     return getBaseUrl(route);
 };
 
-const getApiRoot = function(route) {
-    return baseAPIUrl(route);
+const getApiRoot = function(route, server_name) {
+    return baseAPIUrl(route, server_name);
 };
 
 

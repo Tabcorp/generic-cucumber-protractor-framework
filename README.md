@@ -69,6 +69,7 @@ Copy and paste the protractor-conf.js into /e2e/config and update accordingly.
      * request.js
      * request_payloads.js
      * restConfig.js
+     * servers.js
      * step_definitions_manager.js
      * stored_data.js
      * tag_manager.js
@@ -217,7 +218,7 @@ NAVIGATION STEPS
 REST STEPS
 ----------
 
-    When I have a created a "([^"]*)" for "([^"]*)"
+    When I have a created a "([^"]*)" for "([^"]*)" through the "([^"]*)"
     When I retrieve and store the "(.*)" from "([^"]*)" as "([^"]*)"
 
 STORED STEPS

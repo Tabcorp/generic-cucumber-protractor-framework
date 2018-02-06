@@ -1,9 +1,9 @@
 var navigation = require('../support/navigation')
 
-var get = function(route) {
+var get = function(route, server_name) {
     response = {
         method: 'GET',
-        url: navigation.getApiRoot(route),
+        url: navigation.getApiRoot(route, server_name),
         resolveWithFullResponse: true,
         headers: {
             'Content-Type': 'application/json',
@@ -12,10 +12,11 @@ var get = function(route) {
     return response;
 };
 
-var post = function(json, context) {
+var post = function(json, context, server_name) {
+    console.log(JSON.stringify(json))
     response = {
         method: 'POST',
-        url: navigation.getApiRoot(context),
+        url: navigation.getApiRoot(context, server_name),
         resolveWithFullResponse: true,
         headers: {
             'Content-Type': 'application/json',
@@ -25,10 +26,10 @@ var post = function(json, context) {
     return response;
 };
 
-var del = function(context) {
+var del = function(context, server_name) {
     response = {
         method: 'DELETE',
-        url: navigation.getApiRoot(context),
+        url: navigation.getApiRoot(context, server_name),
         headers: {
             'Content-Type': 'application/json',
         },

@@ -299,6 +299,7 @@ Then(/^the "([^"]*)" contains the text "([^"]*)"$/, function (main_element_name,
         }).should.notify(next);
 });
 
+
 Then(/^the "([^"]*)" contains no text$/, function (main_element_name, next) {
     const main_element_selector = pageObjects.elementFor(element_name);
     pageObjects.waitForElementToLoad(main_element_selector)
@@ -513,4 +514,3 @@ When(/^a new tab is opened with the url containing "([^"]*)"$/, function (expect
         }).should.notify(next);
 
 });
-

@@ -21,7 +21,7 @@ const getBaseUrl = function (route) {
 };
 
 var baseAPIUrl = function (route, server_name) {
-    const server = servers.getAPIServerURL(server_name)
+    const server = servers.getAPIServerURL(server_name);
     return "http://"+server+route
 }
 

@@ -15,8 +15,8 @@ Then(/^the "([^"]*)" table contains the following:$/, function (main_element_nam
                 return current_element.getText().then(function (text) {
                     dataTable.hashes().forEach(function (row) {
                         for (const key in row){
-                            current_text = helpers.replaceLineBreaks(row[key]);
-                            ui_text = helpers.replaceLineBreaks(text);
+                            var current_text = helpers.replaceLineBreaks(row[key]);
+                            var ui_text = helpers.replaceLineBreaks(text);
                             ui_text.should.deep.include(current_text);
                         }
                     });

@@ -15,13 +15,13 @@ const updateRequest = function(request) {
     var end_date = date.getTime() - 24 * 360 * 1000;
     var start_date = date.getTime() - 5 * 24 * 360 * 1000;
     var later_start_date = date.getTime() + 5 * 360 * 1000;
-    var later_end_date = date.getTime() + 24 * 24 * 360 * 10000;;
+    var later_end_date = date.getTime() + 24 * 24 * 360 * 10000;
 
     updated_offer_json = JSON.stringify(request)
-        .replace("\"{start-date}\"", start_date)
-        .replace("\"{end-date}\"", end_date)
-        .replace("\"{later-start-date}\"", later_start_date)
-        .replace("\"{later-end-date}\"", later_end_date);
+        .replace(/"{start-date}"/g, start_date)
+        .replace(/"{end-date}"/g, end_date)
+        .replace(/"{later-start-date}"/g, later_start_date)
+        .replace(/"{later-end-date}"/g, later_end_date);
 
     return updated_offer_json;
 };

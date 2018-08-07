@@ -4,9 +4,6 @@ const servers = require("./servers");
 
 const getBaseUrl = function (route) {
     switch(getEnvironment()) {
-        case 'localhost':
-            var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
-            break;
         case 'uat':
             var baseUrl = process.env.UAT_UI_ROUTE;
             break;
@@ -15,6 +12,9 @@ const getBaseUrl = function (route) {
             break;
         case 'production':
             var baseUrl = process.env.PRODUCTION_UI_ROUTE;
+            break;
+        default:
+            var baseUrl = BASE_URL_TEMPLATE.replace("server", webServer()).replace("port", webServerPort());
             break;
     }
     return `${baseUrl}${route}`;

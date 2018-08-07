@@ -306,7 +306,7 @@ Then(/^the "([^"]*)" should be "([^"]*)" less than the stored number for "([^"]*
         }).should.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" number should be "([^"]*)" less than the stored number for "([^"]*)"$/, function (main_element_index, main_element_name, expected_number_difference, stored_name, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" number should be "([^"]*)" less than the stored number for "([^"]*)"$/, function (main_element_index, main_element_name, expected_number_difference, stored_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const expected_number = helpers.retrieveAsNumber(stored_data.getData(stored_name));

@@ -12,7 +12,7 @@ const browsers = require('../support/browsers');
 const waitFor = require('../support/waitFor');
 
 
-When(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (element_index, element_name, page_name, next) {
+When(/^I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link) I should be directed to the "([^"]*)" page$/, function (element_index, element_name, page_name, next) {
     const main_index = parseInt(element_index) - 1;
     const main_element_selector = pageObjects.elementFor(element_name);
     const current_url = page.getPageURL(page_name);
@@ -42,7 +42,7 @@ Then(/^I click the "([^"]*)" with the text "([^"]*)"$/, function (element_name, 
         }).should.notify(next)
 });
 
-Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (element_index, element_name, next) {
+Then(/^I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)$/, function (element_index, element_name, next) {
     const main_index = parseInt(element_index) - 1;
     const main_element_selector = pageObjects.elementFor(element_name);
     pageObjects.waitForElementAtIndexToLoad(main_index, main_element_selector)
@@ -80,7 +80,7 @@ Then(/^I click the "([^"]*)" by text "([^"]*)" I should be directed to the "([^"
         }).should.notify(next);
 });
 
-Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (element_type_index, element_type, element_text, page_name, next) {
+Then(/^I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" by text "([^"]*)" I should be directed to the "([^"]*)" page$/, function (element_type_index, element_type, element_text, page_name, next) {
     const main_index = parseInt(element_type_index) - 1;
     const main_element_type = pageObjects.elementTypeFor(element_type);
     const current_url = page.getPageURL(page_name);
@@ -100,7 +100,7 @@ Then(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" by text "([^"]*)" I should
         }).should.notify(next);
 });
 
-Given(/^I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (second_element_name, main_element_index, main_element_name, next) {
+Given(/^I click the "([^"]*)" (?:button|link|icon|element) within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, function (second_element_name, main_element_index, main_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);
@@ -113,7 +113,7 @@ Given(/^I click the "([^"]*)" (?:button|link|icon|element) within the "(1st|2nd|
 });
 
 
-Given(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (second_element_index, second_element_name, main_element_index, main_element_name, next) {
+Given(/^I click the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element|checkbox) within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, function (second_element_index, second_element_name, main_element_index, main_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_index = parseInt(second_element_index) - 1;
@@ -126,14 +126,14 @@ Given(/^I click the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|eleme
         }).should.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" element$/, function (main_element_index, main_element_name, second_element_name, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the "([^"]*)" element$/, function (main_element_index, main_element_name, second_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);
     general.checkElementWithinElementAtIndexIsNotDisplayed(main_index, secondary_element_selector, main_element_selector).should.eventually.be.false.and.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element$/, function (main_element_index, main_element_name, second_element_name, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the "([^"]*)" element$/, function (main_element_index, main_element_name, second_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);
@@ -141,7 +141,7 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" element$/, 
 });
 
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, element_text, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the "([^"]*)" text "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, element_text, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     general.checkElementTextAtIndexIsPresent(main_index, main_element_selector, attribute_type, element_text).should.eventually.be.true.and.notify(next);
@@ -313,7 +313,7 @@ Then(/^the "([^"]*)" contains no text$/, function (main_element_name, next) {
         }).should.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"$/, function (main_element_index, main_element_name, element_text, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the text "([^"]*)"$/, function (main_element_index, main_element_name, element_text, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     pageObjects.waitForElementToLoad(main_element_selector)
@@ -327,7 +327,7 @@ Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the text "([^"]*)"$/, fun
         }).should.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains "([^"]*)" "([^"]*)"$/, function (main_element_index, main_element_name, count, second_element_name, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains "([^"]*)" "([^"]*)"$/, function (main_element_index, main_element_name, count, second_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);
@@ -343,7 +343,7 @@ Then(/^the "([^"]*)" element within the "([^"]*)" should be present$/, function 
     general.checkElementWithinElementIsPresent(main_element_selector, second_element_selector).should.eventually.be.true.and.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the text "([^"]*)"$/, function (main_element_index, main_element_name, element_text, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the text "([^"]*)"$/, function (main_element_index, main_element_name, element_text, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     pageObjects.waitForElementToLoad(main_element_selector)
@@ -414,7 +414,7 @@ Then(/^the "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, function (
     general.isElementTextPresent(main_element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, attribute, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the "([^"]*)" text "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, attribute, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     general.isElementTextAtIndexPresent(main_index, main_element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
@@ -435,13 +435,13 @@ Then(/^the "([^"]*)" does not contain the "([^"]*)" attributes "([^"]*)"$/, func
     general.isElementAttributesPresent(main_element_selector, attribute_type, attribute).should.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, attribute, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" contains the "([^"]*)" attribute "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, attribute, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     general.checkClassAtIndexIsPresent(main_index, main_element_selector, attribute_type, attribute).should.eventually.be.true.and.notify(next);
 });
 
-Then(/^the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, attribute, next) {
+Then(/^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" does not contain the "([^"]*)" attribute "([^"]*)"$/, function (main_element_index, main_element_name, attribute_type, attribute, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     general.checkClassAtIndexIsPresent(main_index, main_element_selector, attribute_type, attribute).should.eventually.be.false.and.notify(next);
@@ -472,7 +472,7 @@ Then(/^I can see more than "(\d*)" "([^"]*)" (?:buttons|links|icons|elements)$/,
         }).should.notify(next);
 });
 
-Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (count, second_element_name, main_element_index, main_element_name, next) {
+Then(/^I can see "(\d*)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, function (count, second_element_name, main_element_index, main_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);
@@ -484,7 +484,7 @@ Then(/^I can see "(\d*)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"
         }).should.notify(next);
 });
 
-Given(/^I see the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)"$/, function (second_element_index, second_element_name, main_element_index, main_element_name, next) {
+Given(/^I see the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)"$/, function (second_element_index, second_element_name, main_element_index, main_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_index = parseInt(second_element_index) - 1;

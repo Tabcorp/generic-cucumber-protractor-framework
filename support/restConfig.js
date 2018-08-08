@@ -14,6 +14,8 @@ var get = function(route, server_name) {
 
 var post = function(json, context, server_name) {
     console.log(JSON.stringify(json))
+
+
     response = {
         method: 'POST',
         url: navigation.getApiRoot(context, server_name),

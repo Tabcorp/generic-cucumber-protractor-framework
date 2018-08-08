@@ -1,6 +1,6 @@
 {
   "name": "generic-cucumber-protractor-framework",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Generic Cucumber Protractor Automation Framework",
   "main": "index.js",
   "scripts": {

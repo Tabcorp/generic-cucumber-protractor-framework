@@ -30,7 +30,7 @@ Then(/I fill in the "([^"]*)" input with "([^"]*)"$/, function (main_element_nam
         });
 });
 
-Then(/I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (second_element_name, value, main_element_index, main_element_name, next) {
+Then(/I fill in the "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)$/, function (second_element_name, value, main_element_index, main_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);
@@ -44,7 +44,7 @@ Then(/I fill in the "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9
         });
 });
 
-Then(/I fill in the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" input with "([^"]*)" within the "(1st|2nd|3rd|[0-9]+th)" "([^"]*)" (?:button|link|icon|element)$/, function (second_element_index, second_element_name, value, main_element_index, main_element_name, next) {
+Then(/I fill in the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" input with "([^"]*)" within the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" (?:button|link|icon|element)$/, function (second_element_index, second_element_name, value, main_element_index, main_element_name, next) {
     const main_index = parseInt(main_element_index) - 1;
     const main_element_selector = pageObjects.elementFor(main_element_name);
     const secondary_element_selector = pageObjects.elementFor(second_element_name);

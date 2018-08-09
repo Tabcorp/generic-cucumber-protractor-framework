@@ -48,7 +48,6 @@
     "chai-things": "^0.2.0",
     "cucumber-pretty": "^1.4.0",
     "faker": "^4.1.0",
-    "hoek": "^4.2.1",
     "lodash": "^4.17.5",
     "protractor-flake": "^3.0.1",
     "protractor-hotkeys": "0.0.5",

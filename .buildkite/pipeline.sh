@@ -7,3 +7,4 @@ steps:
     agents:
       queue: keno-web-auto
 EOM
+fi

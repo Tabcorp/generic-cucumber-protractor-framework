@@ -24,7 +24,7 @@ Before(function (scenario, next) {
         var tabletSize = [ parseInt(process.env.TABLET_UI_HEIGHT) || 768, parseInt(process.env.TABLET_UI_WIDTH) || 1024 ];
         browser.executeScript(genericResize, tabletSize).then(next);
     } else if (browser_type === "@desktop") {
-        var dekstopSize = [ parseInt(process.env.DESKTOP_UI_HEIGHT) || 1200, parseInt(process.env.DESKTOP_UI_WIDTH) || 800 ];
+        var desktopSize = [ parseInt(process.env.DESKTOP_UI_HEIGHT) || 1200, parseInt(process.env.DESKTOP_UI_WIDTH) || 800 ];
         browser.executeScript(genericResize, desktopSize).then(next);
     }
     else {

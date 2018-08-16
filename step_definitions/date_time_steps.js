@@ -15,7 +15,7 @@ Then(/^the "([^"]*)" contains a correctly formatted date$/, function(main_elemen
     return waitFor(() => {
         return current_element.getText().then(function (ui_text) {
             var current_text = helpers.replaceLineBreaks(ui_text);
-            return current_text.should.match(/^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sun|Mon|Tue|Wed|Thu|Fri|Sat)\s[0-9]{1,2}\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/);
+            return current_text.should.match(/^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sun|Mon|Tue|Wed|Thu|Fri|Sat)\s[0-9]{1,2}\,?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s?(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)?(\s\d{4})?$/);
             });
         });
     }).should.notify(next);

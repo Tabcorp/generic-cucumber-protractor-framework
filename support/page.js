@@ -29,7 +29,7 @@ const pageTitle = function (page = current_page) {
 
 const goto = function (page, callback) {
   setCurrentPage(page);
-  browser.get(navigation.getPage(page)).then(function () {
+  browser.get(navigation.getPage(page, true)).then(function () {
     browser.waitForAngular();
     return pageTitle(page).then(function () {
       callback();

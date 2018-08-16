@@ -20,3 +20,16 @@ Then(/^the "([^"]*)" contains a correctly formatted date$/, function(main_elemen
         });
     }).should.notify(next);
 });
+
+Then(/^the "([^"]*)" contains a correctly formatted time$/, function(main_element_name, next) {
+  const main_element_selector = pageObjects.elementFor(main_element_name);
+  pageObjects.waitForElementToLoad(main_element_selector)
+  .then(function (current_element) {
+    return waitFor(() => {
+        return current_element.getText().then(function (ui_text) {
+            var current_text = helpers.replaceLineBreaks(ui_text);
+            return current_text.should.match(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]\s?(AM|PM)?$/);
+          });
+        });
+    }).should.notify(next);
+});

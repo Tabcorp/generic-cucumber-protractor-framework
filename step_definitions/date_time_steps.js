@@ -28,7 +28,7 @@ Then(/^the "([^"]*)" contains a correctly formatted time$/, function(main_elemen
     return waitFor(() => {
         return current_element.getText().then(function (ui_text) {
             var current_text = helpers.replaceLineBreaks(ui_text);
-            return current_text.should.match(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]\s?(AM|PM)?$/);
+            return current_text.should.match(/^([0-9]|0[0-9]|1[0-9]|2[0-3])\s?:?[0-5][0-9]\s?(AM|PM)?$/);
           });
         });
     }).should.notify(next);

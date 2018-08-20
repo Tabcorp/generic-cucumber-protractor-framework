@@ -38,8 +38,14 @@ const elementFor = function (page, page_type) {
     return current_page.pageFor(page)[page_type];
 };
 
-const getPage = function (page) {
+const getPage = function (page, includeQuery) {
     var route = elementFor("pages", page);
+    if (includeQuery) {
+        var query = elementFor("pages", page + "Query");
+        if (query) {
+            route += "?" + query;
+        }
+    }
     return getBaseUrl(route);
 };
 

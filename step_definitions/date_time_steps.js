@@ -3,7 +3,6 @@ const path = require('path');
 const ROOT_PATH = path.resolve('./');
 const { Given, When, Then } = require(ROOT_PATH + '/node_modules/cucumber');
 const pageObjects = require('../support/pageObjects');
-const page = require('../support/page');
 const helpers = require('../support/helpers');
 const waitFor = require('../support/waitFor');
 

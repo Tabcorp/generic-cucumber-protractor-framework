@@ -108,6 +108,7 @@ TABLET_UI_WIDTH - default = 1024 <br />
 DESKTOP_UI_HEIGHT - default = 1200 <br />
 DESKTOP_UI_WIDTH - default = 800 <br />
 EXTENDED_POLL_WAIT_ON_CLICK - default = 100 <br />
+BROWSER - default = chrome (option: firefox) <br />
 
 # Cucumber steps available
 

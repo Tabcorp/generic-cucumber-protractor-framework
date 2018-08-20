@@ -1,6 +1,8 @@
 var navigation = require('./navigation');
 
-var tagsForEnvironment = function (browser_tag, suite_tag) {
+var tagsForEnvironment = function (suite_tag) {
+
+    const browser_tag = process.env.BROWSER_RESOLUTION || '@desktop';
 
     switch(navigation.getEnvironment()) {
         case 'uat':
@@ -20,9 +22,6 @@ var tagsForEnvironment = function (browser_tag, suite_tag) {
             tags.push(...[ suite_tag, '~@wip', '~@removed', '~@unreleased', process.env.SPECIAL_EXCLUDED_TAGS || '~@broken']);
             break;
     }
-
-    console.log("executing the following scenario tags: ", tags);
-
     return tags
 };
 

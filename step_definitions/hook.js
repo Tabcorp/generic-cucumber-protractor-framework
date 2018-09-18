@@ -6,18 +6,41 @@ var {After, Before} = require(ROOT_PATH + '/node_modules/cucumber');
 const stored_data = require('../support/stored_data');
 const json_store = require('../support/json_store');
 
+const BROWSER_WINDOW = Object.freeze({
+    MOBILE_WIDTH: process.env.MOBILE_UI_WIDTH || 375,
+    MOBILE_HEIGHT: process.env.MOBILE_UI_HEIGHT || 667,
+    TABLET_WIDTH: process.env.TABLET_UI_WIDTH || 1024,
+    TABLET_HEIGHT: process.env.TABLET_UI_HEIGHT || 768,
+    DESKTOP_WIDTH: process.env.DESKTOP_UI_WIDTH || 1200,
+    DESKTOP_HEIGHT: process.env.DESKTOP_UI_HEIGHT || 800,
+    SCREENSHOT_HEIGHT: process.env.SCREENSHOT_UI_HEIGHT || 7000
+});
+
+const setWindowSize = function (width, height, callback) {
+    browser.driver.manage().window().setSize(parseInt(width), parseInt(height)).then(callback);
+};
+
 Before(function (scenario, next) {
-    var tags = scenario.pickle.tags;
-    var browser_type = tags[0].name
-    console.log("Resolution ", browser_type);
-    //set the browser dimensions for the test
-    browser.params.browser_type = browser_type;
-    if (browser_type === "@mobile") {
-        browser.driver.manage().window().setSize(parseInt(process.env.MOBILE_UI_HEIGHT) || 375, parseInt(process.env.MOBILE_UI_WIDTH) || 667).then(next);
-    } else if (browser_type === "@tablet") {
-        browser.driver.manage().window().setSize(parseInt(process.env.TABLET_UI_HEIGHT) || 768, parseInt(process.env.TABLET_UI_WIDTH) || 1024).then(next);
-    } else if (browser_type === "@desktop") {
-        browser.driver.manage().window().setSize(parseInt(process.env.DESKTOP_UI_HEIGHT) || 1200, parseInt(process.env.DESKTOP_UI_WIDTH) || 800).then(next);
+    const tags          = scenario.pickle.tags.map(tag => tag.name);
+    const isMobile      = tags.includes('@mobile');
+    const isTablet      = tags.includes('@tablet');
+    const isDesktop     = tags.includes('@desktop');
+    const isScreenshot  = tags.includes('@Screenshot');
+    if (isMobile) {
+        setWindowSize(BROWSER_WINDOW.MOBILE_WIDTH, BROWSER_WINDOW.DESKTOP_HEIGHT, next);
+    } else if (isTablet) {
+        setWindowSize(BROWSER_WINDOW.TABLET_WIDTH, BROWSER_WINDOW.TABLET_HEIGHT, next);
+    } else if (isDesktop) {
+        if (isScreenshot) {
+            const browserWindow = browser.driver.manage().window();
+            browserWindow.maximize().then(function () {
+              browserWindow.getSize().then(function (size) {
+                setWindowSize(size.width, BROWSER_WINDOW.SCREENSHOT_HEIGHT, next);
+              })
+            });
+        } else {
+          setWindowSize(BROWSER_WINDOW.DESKTOP_WIDTH, BROWSER_WINDOW.DESKTOP_HEIGHT, next);
+        }
     } else {
         next();
     }

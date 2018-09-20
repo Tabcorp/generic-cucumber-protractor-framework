@@ -42,9 +42,14 @@ const goto = function (page, callback) {
 const redirect = function (page_name, callback) {
   setCurrentPage(page_name);
   const current_url = getPageURL();
+  console.log('### current_url:', current_url);
   pageTitle(page_name).then(function () {
-    waitFor(() => {
-      return browser.getCurrentUrl().should.eventually.contain(current_url);
+    return waitFor(() => {
+      return browser.getCurrentUrl().then(function (url) {
+        console.log('### compare to browser url:', url);
+        console.log('### good?', url.should.contain(current_url));
+        return url.should.contain(current_url);
+      });
     }).should.notify(callback);
   }, function (err) {
     throw new Error(err);

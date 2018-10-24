@@ -13,7 +13,7 @@ const BROWSER_WINDOW = Object.freeze({
     TABLET_HEIGHT: process.env.TABLET_UI_HEIGHT || 768,
     DESKTOP_WIDTH: process.env.DESKTOP_UI_WIDTH || 1200,
     DESKTOP_HEIGHT: process.env.DESKTOP_UI_HEIGHT || 800,
-    SCREENSHOT_HEIGHT: process.env.SCREENSHOT_UI_HEIGHT || 7000
+    SCREENSHOT_HEIGHT: process.env.SCREENSHOT_UI_HEIGHT || 2000
 });
 
 const setWindowSize = function (width, height, callback) {

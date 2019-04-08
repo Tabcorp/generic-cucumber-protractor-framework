@@ -1,7 +1,7 @@
-const jsonPath = require('JSONPath');
+const jsonPath = require('jsonpath');
 
 const getJsonFromPath = function (json_path, json_body) {
-    return jsonPath.eval(JSON.parse(json_body), json_path);
+    return jsonPath.query(JSON.parse(json_body), json_path);
 };
 
 module.exports.getJsonFromPath = getJsonFromPath;

@@ -1,6 +1,6 @@
 {
   "name": "generic-cucumber-protractor-framework",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "description": "Generic Cucumber Protractor Automation Framework",
   "main": "index.js",
   "scripts": {
@@ -42,7 +42,7 @@
   "homepage": "https://github.com/Tabcorp/generic-cucumber-protractor-framework#readme",
   "dependencies": {},
   "devDependencies": {
-    "JSONPath": "^0.11.2",
+    "jsonpath": "^1.0.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chai-things": "^0.2.0",
